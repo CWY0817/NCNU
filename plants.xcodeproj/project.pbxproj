@@ -57,12 +57,12 @@
 		AFF17B08223EBB4200230AD4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF17B07223EBB4200230AD4 /* ProfileViewController.swift */; };
 		AFF17B0A22421D2100230AD4 /* ResetPwViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF17B0922421D2100230AD4 /* ResetPwViewController.swift */; };
 		AFF35A4A225099FF000E88E9 /* UIImage+Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF35A49225099FF000E88E9 /* UIImage+Scale.swift */; };
+		AFF6BBDC2250D33100EC5AE8 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF6BBDB2250D33100EC5AE8 /* Post.swift */; };
+		AFF6BBDF2250D58D00EC5AE8 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF6BBDE2250D58D00EC5AE8 /* PostService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		23A19B8336E021BCBBCC8704 /* Pods_plants.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_plants.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		41A63E835DD9DE9FBC4DE229 /* Pods-plants.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-plants.debug.xcconfig"; path = "Pods/Target Support Files/Pods-plants/Pods-plants.debug.xcconfig"; sourceTree = "<group>"; };
-		524B641434CB02F5CE1B6302 /* Pods-plants.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-plants.release.xcconfig"; path = "Pods/Target Support Files/Pods-plants/Pods-plants.release.xcconfig"; sourceTree = "<group>"; };
 		61B6DBD31CEB72B8AA570AE7 /* Pods-plants.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-plants.release.xcconfig"; path = "Target Support Files/Pods-plants/Pods-plants.release.xcconfig"; sourceTree = "<group>"; };
 		77F8F53B4022405C80231031 /* Pods-plants.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-plants.debug.xcconfig"; path = "Target Support Files/Pods-plants/Pods-plants.debug.xcconfig"; sourceTree = "<group>"; };
 		AF1DB739222E0FA40006C77F /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
@@ -117,6 +117,8 @@
 		AFF17B07223EBB4200230AD4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		AFF17B0922421D2100230AD4 /* ResetPwViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPwViewController.swift; sourceTree = "<group>"; };
 		AFF35A49225099FF000E88E9 /* UIImage+Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Scale.swift"; sourceTree = "<group>"; };
+		AFF6BBDB2250D33100EC5AE8 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		AFF6BBDE2250D58D00EC5AE8 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,8 +139,6 @@
 			children = (
 				77F8F53B4022405C80231031 /* Pods-plants.debug.xcconfig */,
 				61B6DBD31CEB72B8AA570AE7 /* Pods-plants.release.xcconfig */,
-				41A63E835DD9DE9FBC4DE229 /* Pods-plants.debug.xcconfig */,
-				524B641434CB02F5CE1B6302 /* Pods-plants.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -201,6 +201,7 @@
 				AF31609221226477003A3730 /* Plants.swift */,
 				AFB0F27B2192887900337185 /* Plantslocation.swift */,
 				AFB0F27D2192893C00337185 /* Datatag.swift */,
+				AFF6BBDB2250D33100EC5AE8 /* Post.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -227,11 +228,12 @@
 			isa = PBXGroup;
 			children = (
 				AF33018E2249404700FD2BAF /* GoogleService-Info.plist */,
-				AF1DB736222E0F410006C77F /* MLmodel */,
 				AFB0F28C2192D87A00337185 /* Souce3 */,
 				AFD2573621A3F7C5000E7C33 /* Source2 */,
 				AFB191502174EE0F005E81F5 /* Source */,
+				AF1DB736222E0F410006C77F /* MLmodel */,
 				AF31609621226C80003A3730 /* storyboard */,
+				AFF6BBDD2250D56100EC5AE8 /* Service */,
 				AFEC26902249C03B00FDD093 /* Util */,
 				AF31609821226CAF003A3730 /* Model */,
 				AFB191492174D9CE005E81F5 /* View */,
@@ -306,6 +308,14 @@
 				AFF35A49225099FF000E88E9 /* UIImage+Scale.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		AFF6BBDD2250D56100EC5AE8 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				AFF6BBDE2250D58D00EC5AE8 /* PostService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -475,6 +485,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFF6BBDF2250D58D00EC5AE8 /* PostService.swift in Sources */,
 				AF52FE572237856900A63EAB /* SignUpViewController.swift in Sources */,
 				AF9E053D222EC9F80075D69B /* HomeCameraViewCell.swift in Sources */,
 				AF70316F2175D52400B0B11B /* MapViewController.swift in Sources */,
@@ -484,6 +495,7 @@
 				AFB9BDA721762F5E00A5B78F /* Plants.xcdatamodeld in Sources */,
 				AFBA1ED5223A10E30008CAA3 /* WelcomeViewController.swift in Sources */,
 				AFEC26942249C0DC00FDD093 /* PostCell.swift in Sources */,
+				AFF6BBDC2250D33100EC5AE8 /* Post.swift in Sources */,
 				AFB0F27C2192887900337185 /* Plantslocation.swift in Sources */,
 				AFF17B0A22421D2100230AD4 /* ResetPwViewController.swift in Sources */,
 				AF31609321226477003A3730 /* Plants.swift in Sources */,

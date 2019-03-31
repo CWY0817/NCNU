@@ -44,7 +44,17 @@ extension FeedTableViewController: ImagePickerDelegate {
     }
     
     func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-        dismiss(animated: true, completion: nil)
+        
+        guard let image = images.first else {
+            dismiss(animated: true, completion: nil)
+            
+            return
+        }
+        
+        PostService.shared.uploadImage(image:image) {
+            self.dismiss(animated: true, completion: nil)
+        }
+        
     }
     
     func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
