@@ -11,6 +11,8 @@ import ImagePicker
 
 class FeedTableViewController: UITableViewController {
     
+    var postfeed: [Post] = []
+    fileprivate var isLoadingPost = false
     
     @IBAction func openCamera(_ sender: Any){
         let imagePickerController = ImagePickerController()
@@ -23,30 +25,59 @@ class FeedTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        PostService.shared.getRecentPosts(limit: 3) { (newPosts) in
-            newPosts.forEach({ (post) in
-                print("-------")
-                print("Post ID: \(post.postId)")
-                print("Image URL: \(post.imageFileURL)")
-                print("User: \(post.user)")
-                print("Votes: \(post.votes)")
-                print("Timestamp: \(post.timestamp)")
-            })
-        }
+        //設置下拉式更新
+        refreshControl = UIRefreshControl()
+        refreshControl?.backgroundColor = UIColor.white
+        refreshControl?.tintColor = UIColor.black
+        refreshControl?.addTarget(self, action: #selector(loadRecentPosts), for: UIControlEvents.valueChanged)
+        
+        //載入目前貼文
+        loadRecentPosts()
         
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    
+    @objc fileprivate func loadRecentPosts() {
+        
+        isLoadingPost = true
+        
+        PostService.shared.getRecentPosts(start: postfeed.first?.timestamp, limit: 10) { (newPosts) in
+            if newPosts.count > 0 {
+                //加入貼文陣列至陣列的開始處
+                self.postfeed.insert(contentsOf: newPosts, at:0)
+            }
+            
+            self.isLoadingPost = false
+            
+            if let _ = self.refreshControl?.isRefreshing {
+                // 為了讓動畫效果更佳,在結束更新之前延遲0.5秒
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
+                    self.refreshControl?.endRefreshing()
+                    self.displayNewPosts(newPosts: newPosts)
+                })
+            }
+            else{
+                self.displayNewPosts(newPosts: newPosts)
+            }
+        }
+    }
+    
+    private func displayNewPosts(newPosts posts: [Post]){
+        //確認我們取得新的貼文來顯示
+        guard posts.count > 0 else {
+            return
+        }
+        
+        //將它們插入表格視圖中來顯示貼文
+        var indexPaths:[IndexPath] = []
+        self.tableView.beginUpdates()
+        for num in 0...(posts.count - 1){
+            let indexPath = IndexPath(row: num, section: 0)
+            indexPaths.append(indexPath)
+        }
+        self.tableView.insertRows(at: indexPaths, with: .fade)
+        self.tableView.endUpdates()
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
 }
 
 extension FeedTableViewController: ImagePickerDelegate {
@@ -66,6 +97,7 @@ extension FeedTableViewController: ImagePickerDelegate {
         //更新圖片至雲端
         PostService.shared.uploadImage(image:image) {
             self.dismiss(animated: true, completion: nil)
+            self.loadRecentPosts()
         }
         
 
@@ -74,5 +106,55 @@ extension FeedTableViewController: ImagePickerDelegate {
     
     func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension FeedTableViewController {
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath){
+        
+        //我們要在使用這滑到最後兩列時觸發這個載入
+        guard !isLoadingPost, postfeed.count - indexPath.row == 2 else {
+            return
+        }
+        
+        isLoadingPost = true
+        
+        guard let lastPostTimestamp = postfeed.last?.timestamp else{
+            isLoadingPost = false
+            return
+        }
+        
+        PostService.shared.getOldPosts(start: lastPostTimestamp, limit: 3){ (newPosts) in
+            //加上新的貼文至目前陣列的表格視圖
+            var indexPaths: [IndexPath] = []
+            self.tableView.beginUpdates()
+            for newPost in newPosts {
+                self.postfeed.append(newPost)
+                let indexPath = IndexPath(row: self.postfeed.count - 1, section: 0)
+                indexPaths.append(indexPath)
+            }
+            self.tableView.insertRows(at: indexPaths, with: .fade)
+            self.tableView.endUpdates()
+            
+            self.isLoadingPost = false
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
+        let currentPost = postfeed[indexPath.row]
+        cell.configure(post: currentPost)
+        
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return postfeed.count
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
 }

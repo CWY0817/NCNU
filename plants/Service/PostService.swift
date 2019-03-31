@@ -106,4 +106,25 @@ final class PostService {
             
         })
     }
+    
+    func getOldPosts(start timestamp: Int, limit: UInt, completionHandler: @escaping ([Post]) -> Void){
+        let postOrderedQuery = POST_DB_REF.queryOrdered(byChild: Post.PostInfoKey.timestamp)
+        let postLimitedQuery = postOrderedQuery.queryEnding(atValue: timestamp - 1, childKey: Post.PostInfoKey.timestamp).queryLimited(toLast: limit)
+        postLimitedQuery.observeSingleEvent(of: .value, with: { (snapshot) in
+            var newPosts: [Post] = []
+            for item in  snapshot.children.allObjects as! [DataSnapshot] {
+                print("Post key: \(item.key)")
+                let postInfo = item.value as? [String: Any] ?? [:]
+                
+                if let post = Post(postId: item.key, postInfo: postInfo){
+                    newPosts.append(post)
+                }
+            }
+            
+            //以降冪來排序 (也就是最新的貼文變成第一則貼文)
+            newPosts.sort(by: { $0.timestamp > $1.timestamp })
+            
+            completionHandler(newPosts)
+        })
+    }
 }
