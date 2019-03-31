@@ -59,6 +59,7 @@
 		AFF35A4A225099FF000E88E9 /* UIImage+Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF35A49225099FF000E88E9 /* UIImage+Scale.swift */; };
 		AFF6BBDC2250D33100EC5AE8 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF6BBDB2250D33100EC5AE8 /* Post.swift */; };
 		AFF6BBDF2250D58D00EC5AE8 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF6BBDE2250D58D00EC5AE8 /* PostService.swift */; };
+		AFF6BBE122511D6A00EC5AE8 /* LineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF6BBE022511D6A00EC5AE8 /* LineButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +120,7 @@
 		AFF35A49225099FF000E88E9 /* UIImage+Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Scale.swift"; sourceTree = "<group>"; };
 		AFF6BBDB2250D33100EC5AE8 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		AFF6BBDE2250D58D00EC5AE8 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		AFF6BBE022511D6A00EC5AE8 /* LineButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,6 +307,7 @@
 		AFEC26902249C03B00FDD093 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				AFF6BBE022511D6A00EC5AE8 /* LineButton.swift */,
 				AFF35A49225099FF000E88E9 /* UIImage+Scale.swift */,
 			);
 			path = Util;
@@ -500,6 +503,7 @@
 				AFF17B0A22421D2100230AD4 /* ResetPwViewController.swift in Sources */,
 				AF31609321226477003A3730 /* Plants.swift in Sources */,
 				AF1E4F9D2234EB4700266519 /* HomeShareViewCell.swift in Sources */,
+				AFF6BBE122511D6A00EC5AE8 /* LineButton.swift in Sources */,
 				AF90643121176EAD00526161 /* AppDelegate.swift in Sources */,
 				AF906445211771DF00526161 /* PlantsTableViewCell.swift in Sources */,
 				AFCD75B821180B45002D13C1 /* PlantsDetailViewController.swift in Sources */,

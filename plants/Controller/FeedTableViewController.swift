@@ -22,7 +22,18 @@ class FeedTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        PostService.shared.getRecentPosts(limit: 3) { (newPosts) in
+            newPosts.forEach({ (post) in
+                print("-------")
+                print("Post ID: \(post.postId)")
+                print("Image URL: \(post.imageFileURL)")
+                print("User: \(post.user)")
+                print("Votes: \(post.votes)")
+                print("Timestamp: \(post.timestamp)")
+            })
+        }
+        
     }
 
     // MARK: - Table view data source
@@ -45,15 +56,19 @@ extension FeedTableViewController: ImagePickerDelegate {
     
     func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
         
+        //取得第一張圖片
         guard let image = images.first else {
             dismiss(animated: true, completion: nil)
             
             return
         }
         
+        //更新圖片至雲端
         PostService.shared.uploadImage(image:image) {
             self.dismiss(animated: true, completion: nil)
         }
+        
+
         
     }
     

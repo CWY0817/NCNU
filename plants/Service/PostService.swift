@@ -20,31 +20,40 @@ final class PostService {
     
     
     func uploadImage(image: UIImage, completionHandler: @escaping () -> Void) {
+        
+        //產生一個貼文的唯一ID並準備貼文Database的參照
         let postDatabaseRef = POST_DB_REF.childByAutoId()
         
+        //使用唯一個key作為圖片名稱並準備Storage參照
         let imageStorageRef = PHOTO_STORAGE_REF.child("\(postDatabaseRef.key).jpg")
         
+        //調整圖片大小
         let scaledImage = image.scale(newWidth: 640.0)
         
         guard let imageData = UIImageJPEGRepresentation(scaledImage, 0.9) else {
             return
         }
         
+        //建立檔案元資料
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpg"
         
+        //準備上傳任務
         let uploadTask = imageStorageRef.putData(imageData, metadata:metadata)
         
+        //觀察上傳狀態
         uploadTask.observe(.success) { (snapshot) in
             guard let displayName = Auth.auth().currentUser?.displayName else {
                 return
             }
             
+            //在資料庫中加上一個參照
             imageStorageRef.downloadURL(completion:{ (url,error) in
                 if let imageFileURL = url?.absoluteString {
                     let timestamp = Int(NSDate().timeIntervalSince1970 * 1000)
                     
                     let post: [String: Any] = [Post.PostInfoKey.imageFileURL: imageFileURL,
+                                               Post.PostInfoKey.votes : Int(0),
                                                Post.PostInfoKey.user: displayName,
                                                Post.PostInfoKey.timestamp: timestamp]
                     
@@ -66,8 +75,35 @@ final class PostService {
         }
     }
     
-    /*func getRecentPosts(start timestamp: Int? = nil, limit: UInt, completionHandler: @escaping ([Post]) -> Void) {
+    func getRecentPosts(start timestamp: Int? = nil, limit: UInt, completionHandler: @escaping ([Post]) -> Void) {
+        
         var postQuery = POST_DB_REF.queryOrdered(byChild: Post.PostInfoKey.timestamp)
-        if let la
-    }*/
+        if let latestPostTimestamp = timestamp, latestPostTimestamp > 0 {
+            //如果有指定時戳,我們將會以比給定值來的新的時戳來取得貼文
+            postQuery = postQuery.queryStarting(atValue: latestPostTimestamp + 1, childKey: Post.PostInfoKey.timestamp).queryLimited(toLast: limit)
+        }
+        else {
+            //否則的話,我們將會取得最近的貼文
+            postQuery = postQuery.queryLimited(toLast: limit)
+        }
+        
+        //呼叫Firebase API來取得最新的資料記錄
+        postQuery.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var newPosts: [Post] = []
+            for item in snapshot.children.allObjects as! [DataSnapshot] {
+                let postInfo = item.value as? [String: Any] ?? [:]
+                if let post = Post(postId: item.key, postInfo: postInfo) {
+                    newPosts.append(post)
+                }
+            }
+            
+            if newPosts.count > 0 {
+                newPosts.sort(by: { $0.timestamp > $1.timestamp })
+            }
+            
+            completionHandler(newPosts)
+            
+        })
+    }
 }
