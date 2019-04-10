@@ -10,6 +10,9 @@ import UIKit
 
 class PlantsTableViewController: UITableViewController {
     
+    var searchController: UISearchController?
+
+    
     var db :SQLiteConnect? = nil
     let url = Bundle.main.path(forResource: "ncnuplant", ofType: "sqlite")
     
@@ -26,6 +29,10 @@ class PlantsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchController = UISearchController(searchResultsController: nil)
+        self.navigationItem.searchController = searchController
+        
         //導覽列
     navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default )
@@ -266,6 +273,8 @@ class PlantsTableViewController: UITableViewController {
         }
         
     }
+    
 
 
 }
+
