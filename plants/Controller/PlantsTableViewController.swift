@@ -8,9 +8,9 @@
 
 import UIKit
 
-class PlantsTableViewController: UITableViewController {
+class PlantsTableViewController: UITableViewController,UISearchResultsUpdating {
     
-    var searchController: UISearchController?
+    var searchController: UISearchController!
 
     
     var db :SQLiteConnect? = nil
@@ -18,20 +18,21 @@ class PlantsTableViewController: UITableViewController {
     
     // MARK: - 植物class陣列
     var plants:[Plants] = []
+    var plantsearch: [Plants] = []
     var plantslocation:[Plantslocation] = []
     var plantsdata:[Plantsdata] = []
     var plantslocationcount = [Int](repeating:0,count:50)
     var plantslon = [Double](repeating:0,count:170)
     var plantslat = [Double](repeating:0,count:170)
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         searchController = UISearchController(searchResultsController: nil)
-        self.navigationItem.searchController = searchController
+        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.placeholder = "搜尋植物名稱..."
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
         
         //導覽列
     navigationController?.navigationBar.prefersLargeTitles = true
@@ -155,7 +156,6 @@ class PlantsTableViewController: UITableViewController {
     
     
 
-    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -165,7 +165,12 @@ class PlantsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return plants.count
+        if searchController.isActive{
+            return plantsearch.count
+        }
+        else{
+            return plants.count
+        }
     }
 
     //MARK: - 建立Cell
@@ -174,83 +179,45 @@ class PlantsTableViewController: UITableViewController {
         let cellidentifier = "Cell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellidentifier, for: indexPath)as! PlantsTableViewCell
 
-        
-        cell.nameLabel.text = plants[indexPath.row].Cname
-        cell.familiaLabel.text = "學名: " + plants[indexPath.row].Familia
-        cell.snameLabel.text = "科屬: " + plants[indexPath.row].Sname
-        cell.plantsimage.image = UIImage(named: plants[indexPath.row].Cname)
-        cell.heartIcon.isHidden = plants[indexPath.row].Isee ? false : true
+        if searchController.isActive{
+            cell.nameLabel.text = plantsearch[indexPath.row].Cname
+            cell.familiaLabel.text = "學名: " + plantsearch[indexPath.row].Familia
+            cell.snameLabel.text = "科屬: " + plantsearch[indexPath.row].Sname
+            cell.plantsimage.image = UIImage(named: plantsearch[indexPath.row].Cname)
+            cell.heartIcon.isHidden = plantsearch[indexPath.row].Isee ? false : true
+            return cell
+        }
+        else{
+            cell.nameLabel.text = plants[indexPath.row].Cname
+            cell.familiaLabel.text = "學名: " + plants[indexPath.row].Familia
+            cell.snameLabel.text = "科屬: " + plants[indexPath.row].Sname
+            cell.plantsimage.image = UIImage(named: plants[indexPath.row].Cname)
+            cell.heartIcon.isHidden = plants[indexPath.row].Isee ? false : true
+            return cell
+        }
 
-        return cell
+        
+        
+
+        /*let searchResults = (searchController.isActive) ? plantsearch[indexPath.row] : plants[indexPath.row]
+        
+        cell.nameLabel.text = searchResults.Cname
+        cell.familiaLabel.text = "學名: " + searchResults.Familia
+        cell.snameLabel.text = "科屬: " + searchResults.Sname
+        cell.plantsimage.image = UIImage(named: searchResults.Cname)
+        cell.heartIcon.isHidden = searchResults.Isee ? false : true
+
+        return cell*/
     }
 
-    //MARK: - 向左滑動
-    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?{
-        
-        //刪除
-        let deleteAction = UIContextualAction(style:.destructive,title: "Delete"){(action,sourceView,completionHandler) in
-            
-            self.plants.remove(at: indexPath.row)
-            
-            self.tableView.deleteRows(at: [indexPath], with: .fade)
-            
-            completionHandler(true)
-        }
-        deleteAction.backgroundColor = UIColor(red:231.0/255.0,green:76.0/255.0,blue:60.0/255.0,alpha:1.0)
-        deleteAction.image = UIImage(named: "delete")
-        
-        //分享
-        let shareAction = UIContextualAction(style:.normal,title:"Share"){(action,sourceView,completionHandler) in
-            
-            let sharetext = "去看看這植物吧🌳"
-            
-            let activityController : UIActivityViewController
-            if let shareimage = UIImage(named: self.plants[indexPath.row].Cname){
-                activityController = UIActivityViewController(activityItems: [shareimage,sharetext], applicationActivities: nil)
-            }
-            else{
-                activityController = UIActivityViewController(activityItems: [sharetext], applicationActivities: nil)
-            }
-            
-            if let popoverController = activityController.popoverPresentationController{
-                if let cell = tableView.cellForRow(at: indexPath){
-                    popoverController.sourceView = cell
-                    popoverController.sourceRect = cell.bounds
-                }
-            }
-            
-            self.present(activityController,animated: true,completion: nil)
-            completionHandler(true)
-        }
-        shareAction.backgroundColor = UIColor(red:254.0/255.0,green:149.0/255.0,blue:38.0/255.0,alpha:1.0)
-        shareAction.image = UIImage(named: "share")
-        
-        //check
-        let title2 = plants[indexPath.row].Isee ? "Undo Check" : "Check"
-        let booling2 = plants[indexPath.row].Isee ? false : true
-        
-        let checkAction2 = UIContextualAction(style:.normal,title:title2){(action,sourceView,completionHandler) in
-            let cell = tableView.cellForRow(at: indexPath)as!PlantsTableViewCell
-            cell.heartIcon.isHidden = booling2 ? false : true
-            self.plants[indexPath.row].Isee = booling2
-            completionHandler(true)
-        }
-        let img = booling2 ? "tick" : "undo"
-        checkAction2.image = UIImage(named: img)
-        
-        
-        let Swipe = UISwipeActionsConfiguration(actions: [deleteAction,shareAction,checkAction2])
-        
-        return Swipe
-        
-    }
+
     
     // MARK: - 傳遞資料給另一個視圖
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showplantsdetail"{
             if let indexPath = tableView.indexPathForSelectedRow{
                 let destination = segue.destination as!PlantsDetailViewController
-                destination.plants = plants[indexPath.row]
+                destination.plants = (searchController.isActive) ? plantsearch[indexPath.row] : plants[indexPath.row]
                 var counting = 0
                 if indexPath.row > 0{
                     for index in 0...indexPath.row-1
@@ -275,6 +242,106 @@ class PlantsTableViewController: UITableViewController {
     }
     
 
+    func filterContent(for searchText: String) {
+        // 資料庫檔案的路徑
+        let sqlitePath = url!
+        // SQLite 資料庫
+        db = SQLiteConnect(path: sqlitePath)
+        plantsearch = []
+        if let mydb = db {
+            let statement = mydb.search("plantdata", cond: "cname", searching: searchText)
+            
+            while sqlite3_step(statement) == SQLITE_ROW{
+                let pid = sqlite3_column_int(statement, 0)
+                let cname = String(cString: sqlite3_column_text(statement, 1))
+                let sname = String(cString: sqlite3_column_text(statement, 2))
+                let othername = String(cString: sqlite3_column_text(statement, 3))
+                let familia = String(cString: sqlite3_column_text(statement, 4))
+                let originplace = String(cString: sqlite3_column_text(statement, 5))
+                let distribution = String(cString: sqlite3_column_text(statement, 6))
+                let application = String(cString: sqlite3_column_text(statement, 7))
+                let leaf = String(cString: sqlite3_column_text(statement, 8))
+                let stem = String(cString: sqlite3_column_text(statement, 9))
+                let flower = String(cString: sqlite3_column_text(statement, 10))
+                let fruit = String(cString: sqlite3_column_text(statement, 11))
+                let startmonth = sqlite3_column_int(statement, 12)
+                let endmonth = sqlite3_column_int(statement, 13)
+                let tmp = Plants(Pid: pid, Cname: cname, Sname: sname, Othername: othername, Familia: familia, Originplace: originplace, Distribution: distribution, Application: application, Leaf: leaf, Stem: stem, Flower: flower, Fruit: fruit, Startmonth: startmonth, Endmonth: endmonth, Isee: false)
+                plantsearch.append(tmp)
+                print(cname)
+            }
+            sqlite3_finalize(statement)
+        }
+    }
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text{
+            filterContent(for: searchText)
+            tableView.reloadData()
+        }
+    }
 
+    
+    
+    
+    /* //MARK: - 向左滑動
+     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?{
+     
+     //刪除
+     let deleteAction = UIContextualAction(style:.destructive,title: "Delete"){(action,sourceView,completionHandler) in
+     
+     self.plants.remove(at: indexPath.row)
+     
+     self.tableView.deleteRows(at: [indexPath], with: .fade)
+     
+     completionHandler(true)
+     }
+     deleteAction.backgroundColor = UIColor(red:231.0/255.0,green:76.0/255.0,blue:60.0/255.0,alpha:1.0)
+     deleteAction.image = UIImage(named: "delete")
+     
+     //分享
+     let shareAction = UIContextualAction(style:.normal,title:"Share"){(action,sourceView,completionHandler) in
+     
+     let sharetext = "去看看這植物吧🌳"
+     
+     let activityController : UIActivityViewController
+     if let shareimage = UIImage(named: self.plants[indexPath.row].Cname){
+     activityController = UIActivityViewController(activityItems: [shareimage,sharetext], applicationActivities: nil)
+     }
+     else{
+     activityController = UIActivityViewController(activityItems: [sharetext], applicationActivities: nil)
+     }
+     
+     if let popoverController = activityController.popoverPresentationController{
+     if let cell = tableView.cellForRow(at: indexPath){
+     popoverController.sourceView = cell
+     popoverController.sourceRect = cell.bounds
+     }
+     }
+     
+     self.present(activityController,animated: true,completion: nil)
+     completionHandler(true)
+     }
+     shareAction.backgroundColor = UIColor(red:254.0/255.0,green:149.0/255.0,blue:38.0/255.0,alpha:1.0)
+     shareAction.image = UIImage(named: "share")
+     
+     //check
+     let title2 = plants[indexPath.row].Isee ? "Undo Check" : "Check"
+     let booling2 = plants[indexPath.row].Isee ? false : true
+     
+     let checkAction2 = UIContextualAction(style:.normal,title:title2){(action,sourceView,completionHandler) in
+     let cell = tableView.cellForRow(at: indexPath)as!PlantsTableViewCell
+     cell.heartIcon.isHidden = booling2 ? false : true
+     self.plants[indexPath.row].Isee = booling2
+     completionHandler(true)
+     }
+     let img = booling2 ? "tick" : "undo"
+     checkAction2.image = UIImage(named: img)
+     
+     
+     let Swipe = UISwipeActionsConfiguration(actions: [deleteAction,shareAction,checkAction2])
+     
+     return Swipe
+     
+     }*/
 }
 

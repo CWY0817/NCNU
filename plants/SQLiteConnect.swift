@@ -140,4 +140,23 @@ class SQLiteConnect {
         return false
     }
     
+    // 搜尋
+    func search(
+        _ tableName :String, cond :String?, searching :String?)
+        -> OpaquePointer {
+            var statement :OpaquePointer? = nil
+            var sql = "select * from \(tableName)"
+            if let condition = cond {
+                sql += " where \(condition)"
+            }
+            if let search = searching {
+                sql += " like '%\(search)%'"
+            }
+            
+            sqlite3_prepare_v2(
+                self.db, sql.cString(using: String.Encoding.utf8), -1, &statement, nil)
+            
+            return statement!
+    }
+    
 }
