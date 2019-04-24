@@ -8,6 +8,7 @@
 
 import UIKit
 import ImagePicker
+import Firebase
 
 class FeedTableViewController: UITableViewController {
     
@@ -15,11 +16,18 @@ class FeedTableViewController: UITableViewController {
     fileprivate var isLoadingPost = false
     
     @IBAction func openCamera(_ sender: Any){
-        let imagePickerController = ImagePickerController()
-        imagePickerController.delegate = self
-        imagePickerController.imageLimit = 1
-        
-        present(imagePickerController, animated:true, completion: nil)
+        if Auth.auth().currentUser != nil{
+            let imagePickerController = ImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.imageLimit = 1
+            present(imagePickerController, animated:true, completion: nil)
+        }
+        else{
+            let alertController = UIAlertController(title:"請先登入",message:"必須要先登入才能使用此功能",preferredStyle:UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title:"OK",style:UIAlertActionStyle.default,handler:nil))
+            present(alertController,animated:true,completion: nil)
+        }
+
     }
     
     override func viewDidLoad() {

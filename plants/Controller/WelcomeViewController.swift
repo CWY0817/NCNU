@@ -12,6 +12,12 @@ import Firebase
 import GoogleSignIn
 
 class WelcomeViewController: UIViewController {
+    @IBAction func cancel(sender:UIButton){
+        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "Tab"){
+            UIApplication.shared.keyWindow?.rootViewController = viewController
+            self.dismiss(animated: true, completion: nil)
+            
+        }    }
     
     @IBAction func googleLogin(sender: UIButton){
         GIDSignIn.sharedInstance()?.signIn()
@@ -41,7 +47,7 @@ class WelcomeViewController: UIViewController {
                     return
                 }
                 //呈現主視圖
-                if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView"){
+                if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MyProfile"){
                     UIApplication.shared.keyWindow?.rootViewController = viewController
                     self.dismiss(animated: true, completion: nil)
                 }
@@ -102,7 +108,7 @@ extension WelcomeViewController: GIDSignInDelegate,GIDSignInUIDelegate{
                 return
             }
             
-            if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView"){
+            if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "Tab"){
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 self.dismiss(animated: true, completion: nil)
             }

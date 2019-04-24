@@ -53,7 +53,7 @@ class LoginViewController: UIViewController {
             //解除鍵盤
             self.view.endEditing(true)
             //呈現主視圖
-            if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView"){
+            if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "Tab"){
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 self.dismiss(animated: true, completion: nil)
             }

@@ -218,6 +218,7 @@ class PlantsTableViewController: UITableViewController,UISearchResultsUpdating {
         if segue.identifier == "showplantsdetail"{
             if let indexPath = tableView.indexPathForSelectedRow{
                 let destination = segue.destination as!PlantsDetailViewController
+                destination.hidesBottomBarWhenPushed = true
                 destination.plants = (searchController.isActive) ? plantsearch[indexPath.row] : plants[indexPath.row]
                 var counting = 0
                 if indexPath.row > 0{
@@ -269,7 +270,7 @@ class PlantsTableViewController: UITableViewController,UISearchResultsUpdating {
                 let endmonth = sqlite3_column_int(statement, 13)
                 let tmp = Plants(Pid: pid, Cname: cname, Sname: sname, Othername: othername, Familia: familia, Originplace: originplace, Distribution: distribution, Application: application, Leaf: leaf, Stem: stem, Flower: flower, Fruit: fruit, Startmonth: startmonth, Endmonth: endmonth, Isee: false)
                 plantsearch.append(tmp)
-                print(cname)
+                //print(cname)
             }
             sqlite3_finalize(statement)
         }
