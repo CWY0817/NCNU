@@ -29,7 +29,8 @@ class PlantsTableViewController: UITableViewController,UISearchResultsUpdating {
         super.viewDidLoad()
         
         searchController = UISearchController(searchResultsController: nil)
-        tableView.tableHeaderView = searchController.searchBar
+        self.navigationItem.searchController = searchController
+        //tableView.tableHeaderView = searchController.searchBar
         searchController.searchBar.placeholder = "搜尋植物名稱..."
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
