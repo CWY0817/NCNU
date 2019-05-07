@@ -23,12 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        // Set up the style and color of the common UI elements
-        //customizeUIStyle()
-        //FirebaseApp.configure()
+       FirebaseApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application,didFinishLaunchingWithOptions: launchOptions)
         
-        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+       GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID 
         
         
         if #available(iOS 10.0, *){
@@ -43,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             application.registerUserNotificationSettings(settings)
         }
         application.registerForRemoteNotifications()
-        FirebaseApp.configure()
+        
         return true
     }
     

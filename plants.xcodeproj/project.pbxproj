@@ -14,7 +14,6 @@
 		AF70316B2175C13C00B0B11B /* PlantsDetailSeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF70316A2175C13C00B0B11B /* PlantsDetailSeparatorCell.swift */; };
 		AF70316D2175C1BB00B0B11B /* PlantsDetailMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF70316C2175C1BB00B0B11B /* PlantsDetailMapCell.swift */; };
 		AF70316F2175D52400B0B11B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF70316E2175D52400B0B11B /* MapViewController.swift */; };
-		AF706D7D227218D700B3E4F9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF706D7C227218D700B3E4F9 /* GoogleService-Info.plist */; };
 		AF90643121176EAD00526161 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF90643021176EAD00526161 /* AppDelegate.swift */; };
 		AF90643621176EAD00526161 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF90643421176EAD00526161 /* Main.storyboard */; };
 		AF90643821176EAF00526161 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF90643721176EAF00526161 /* Assets.xcassets */; };
@@ -42,6 +41,7 @@
 		AFB9BDA721762F5E00A5B78F /* Plants.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AFB9BDA521762F5E00A5B78F /* Plants.xcdatamodeld */; };
 		AFBA1ED5223A10E30008CAA3 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBA1ED4223A10E30008CAA3 /* WelcomeViewController.swift */; };
 		AFBA1EDF223ABBFB0008CAA3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBA1EDE223ABBFB0008CAA3 /* LoginViewController.swift */; };
+		AFBBAE1F22812F1300D84609 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFBBAE1E22812F1300D84609 /* GoogleService-Info.plist */; };
 		AFBCF7D1226F776800B00C5F /* Flowers.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = AFBCF7D0226F776800B00C5F /* Flowers.mlmodel */; };
 		AFC23AB62191E6C300D6EE3B /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC23AB52191E6C300D6EE3B /* libsqlite3.tbd */; };
 		AFC23AB82191E70A00D6EE3B /* SQLiteConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC23AB72191E70A00D6EE3B /* SQLiteConnect.swift */; };
@@ -69,7 +69,6 @@
 		AF70316A2175C13C00B0B11B /* PlantsDetailSeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsDetailSeparatorCell.swift; sourceTree = "<group>"; };
 		AF70316C2175C1BB00B0B11B /* PlantsDetailMapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsDetailMapCell.swift; sourceTree = "<group>"; };
 		AF70316E2175D52400B0B11B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		AF706D7C227218D700B3E4F9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AF90642D21176EAD00526161 /* plants.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = plants.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF90643021176EAD00526161 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF90643521176EAD00526161 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -78,7 +77,6 @@
 		AF90643C21176EAF00526161 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF906442211771C100526161 /* PlantsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsTableViewController.swift; sourceTree = "<group>"; };
 		AF906444211771DF00526161 /* PlantsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsTableViewCell.swift; sourceTree = "<group>"; };
-		AFA3DBEC227220CB0004DD9A /* plants.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = plants.entitlements; sourceTree = "<group>"; };
 		AFB0F27B2192887900337185 /* Plantslocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plantslocation.swift; sourceTree = "<group>"; };
 		AFB0F27D2192893C00337185 /* Datatag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datatag.swift; sourceTree = "<group>"; };
 		AFB0F28D2192D88800337185 /* mushin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = mushin.otf; sourceTree = "<group>"; };
@@ -100,6 +98,8 @@
 		AFB9BDA621762F5E00A5B78F /* Plants.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Plants.xcdatamodel; sourceTree = "<group>"; };
 		AFBA1ED4223A10E30008CAA3 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		AFBA1EDE223ABBFB0008CAA3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		AFBBAE1D22812CB800D84609 /* plants.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = plants.entitlements; sourceTree = "<group>"; };
+		AFBBAE1E22812F1300D84609 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AFBCF7D0226F776800B00C5F /* Flowers.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = Flowers.mlmodel; path = "../../../../Desktop/專題/IOS_花朵辨識/MODEL/Original/Flowers.mlmodel"; sourceTree = "<group>"; };
 		AFC23AB32191E6A200D6EE3B /* BridgeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgeHeader.h; sourceTree = "<group>"; };
 		AFC23AB52191E6C300D6EE3B /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -220,8 +220,8 @@
 		AF90642F21176EAD00526161 /* plants */ = {
 			isa = PBXGroup;
 			children = (
-				AFA3DBEC227220CB0004DD9A /* plants.entitlements */,
-				AF706D7C227218D700B3E4F9 /* GoogleService-Info.plist */,
+				AFBBAE1D22812CB800D84609 /* plants.entitlements */,
+				AFBBAE1E22812F1300D84609 /* GoogleService-Info.plist */,
 				AFB0F28C2192D87A00337185 /* Souce3 */,
 				AFD2573621A3F7C5000E7C33 /* Source2 */,
 				AFB191502174EE0F005E81F5 /* Source */,
@@ -391,7 +391,7 @@
 				AFB9BD9F21762F3300A5B78F /* Rubik-Italic.ttf in Resources */,
 				AFB0F28F2192D88800337185 /* mushin.otf in Resources */,
 				AFD2573921A3F7C5000E7C33 /* setofont.ttf in Resources */,
-				AF706D7D227218D700B3E4F9 /* GoogleService-Info.plist in Resources */,
+				AFBBAE1F22812F1300D84609 /* GoogleService-Info.plist in Resources */,
 				AFB9BD9D21762F3300A5B78F /* Rubik-Bold.ttf in Resources */,
 				AFD2573A21A3F7C5000E7C33 /* setofont-ex.ttf in Resources */,
 				AFB9BDA321762F3300A5B78F /* Rubik-MediumItalic.ttf in Resources */,

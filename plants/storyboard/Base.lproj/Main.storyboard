@@ -396,7 +396,7 @@
                                 </constraints>
                                 <state key="normal" image="iconfinder_google_294675"/>
                                 <connections>
-                                    <action selector="googleLoginWithSender:" destination="xql-0v-ii9" eventType="touchUpInside" id="Zfj-8z-xNQ"/>
+                                    <action selector="googleLoginWithSender:" destination="xql-0v-ii9" eventType="touchUpInside" id="ksc-hh-M49"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZM-hs-mHt">
@@ -1025,6 +1025,7 @@
         <image name="man" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Hqt-Q0-UdR"/>
         <segue reference="YOY-5C-FT1"/>
     </inferredMetricsTieBreakers>
 </document>
