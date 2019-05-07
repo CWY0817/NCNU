@@ -683,7 +683,29 @@
                                                                 <constraint firstAttribute="height" constant="30" id="8yA-Hr-6F8"/>
                                                                 <constraint firstAttribute="width" constant="75" id="Zyf-US-2bJ"/>
                                                             </constraints>
-                                                            <state key="normal" title="Button" image="heart"/>
+                                                            <state key="normal" title="240" image="heart">
+                                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="5"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="titleLeftPadding">
+                                                                    <real key="value" value="12"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                    <real key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                    <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="imageRightPadding">
+                                                                    <real key="value" value="15"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="heartClick:" destination="Oio-Fi-A1n" eventType="touchUpInside" id="NFh-33-snC"/>
+                                                            </connections>
                                                         </button>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jSM-L8-qZh">
                                                             <rect key="frame" x="105" y="0.0" width="209" height="30"/>
@@ -712,6 +734,10 @@
                                                         <constraint firstAttribute="height" constant="30" id="wrg-RR-oWd"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="Download"/>
+                                                    <connections>
+                                                        <action selector="saveImage:" destination="Oio-Fi-A1n" eventType="touchUpInside" id="JES-Fh-HWR"/>
+                                                        <action selector="saveWithSender:" destination="FWi-4k-PCM" eventType="touchUpInside" id="gsB-Ek-7AP"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -810,6 +836,7 @@
                     <connections>
                         <outlet property="logbutton" destination="wkC-MU-V4c" id="B6X-fj-nLq"/>
                         <outlet property="nameLabel" destination="awA-CU-M0Y" id="vEe-01-og8"/>
+                        <outlet property="profileimg" destination="mZu-Od-dqU" id="djO-sT-Mr0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dJb-ku-0sN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -950,6 +977,7 @@
                 <tabBarController storyboardIdentifier="Tab" automaticallyAdjustsScrollViewInsets="NO" id="a5V-pb-ZZb" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RUr-dU-8gN">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -997,7 +1025,6 @@
         <image name="man" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Hqt-Q0-UdR"/>
         <segue reference="YOY-5C-FT1"/>
     </inferredMetricsTieBreakers>
 </document>

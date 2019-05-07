@@ -12,6 +12,7 @@ import GoogleSignIn
 
 class ProfileViewController: UIViewController {
     @IBOutlet var nameLabel:UILabel!
+    @IBOutlet var profileimg : UIImageView!
     @IBOutlet var logbutton : UIButton!
     @IBAction func LoginOrNot(sender: UIButton){
         if Auth.auth().currentUser != nil{
@@ -63,6 +64,7 @@ class ProfileViewController: UIViewController {
         if Auth.auth().currentUser != nil{
             if let currentUser = Auth.auth().currentUser{
                 nameLabel.text = currentUser.displayName
+                //profileimg.image = UIImage(named: "\(currentUser.photoURL)")
                 logbutton.setTitle("登出", for: .normal)
             }
         }

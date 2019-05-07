@@ -30,6 +30,19 @@ class FeedTableViewController: UITableViewController {
 
     }
     
+    //儲存照片至手機相簿的提示框
+    @IBAction func save(sender: UIButton){
+        let alertController = UIAlertController(title: "儲存至相簿",
+                                                message: nil, preferredStyle: .alert)
+        //顯示提示框
+        self.present(alertController, animated: true, completion: nil)
+        //0.5秒後自動消失
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+            self.presentedViewController?.dismiss(animated: false, completion: nil)
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>for you to choose photos to upload</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -27,7 +23,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb1984294381874720</string>
+				<string>fb636834823428114</string>
 			</array>
 		</dict>
 		<dict>
@@ -35,16 +31,16 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.191532767435-3m9kmu3o6eop83dmm62o60jvag1jotue</string>
+				<string>com.googleusercontent.apps.772030807376-0eatflod3eescl2rt32ald8o6vhvcg1g</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAppID</key>
-	<string>1984294381874720</string>
+	<string>636834823428114</string>
 	<key>FacebookDisPlayName</key>
-	<string>NCNUPlants</string>
+	<string>NCNUplants</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -56,6 +52,10 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>for Identification system and capturing photo</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string></string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>for you to choose photos to upload</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

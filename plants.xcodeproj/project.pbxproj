@@ -9,22 +9,18 @@
 /* Begin PBXBuildFile section */
 		28BA695A858FF2E608E82553 /* Pods_plants.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23A19B8336E021BCBBCC8704 /* Pods_plants.framework */; };
 		AF1DB73A222E0FA40006C77F /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1DB739222E0FA40006C77F /* CameraController.swift */; };
-		AF1E4F9D2234EB4700266519 /* HomeShareViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1E4F9C2234EB4700266519 /* HomeShareViewCell.swift */; };
 		AF31609321226477003A3730 /* Plants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF31609221226477003A3730 /* Plants.swift */; };
-		AF33018F2249404800FD2BAF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF33018E2249404700FD2BAF /* GoogleService-Info.plist */; };
 		AF52FE572237856900A63EAB /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF52FE562237856900A63EAB /* SignUpViewController.swift */; };
 		AF70316B2175C13C00B0B11B /* PlantsDetailSeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF70316A2175C13C00B0B11B /* PlantsDetailSeparatorCell.swift */; };
 		AF70316D2175C1BB00B0B11B /* PlantsDetailMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF70316C2175C1BB00B0B11B /* PlantsDetailMapCell.swift */; };
 		AF70316F2175D52400B0B11B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF70316E2175D52400B0B11B /* MapViewController.swift */; };
+		AF706D7D227218D700B3E4F9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF706D7C227218D700B3E4F9 /* GoogleService-Info.plist */; };
 		AF90643121176EAD00526161 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF90643021176EAD00526161 /* AppDelegate.swift */; };
 		AF90643621176EAD00526161 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF90643421176EAD00526161 /* Main.storyboard */; };
 		AF90643821176EAF00526161 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF90643721176EAF00526161 /* Assets.xcassets */; };
 		AF90643B21176EAF00526161 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF90643921176EAF00526161 /* LaunchScreen.storyboard */; };
 		AF906443211771C100526161 /* PlantsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF906442211771C100526161 /* PlantsTableViewController.swift */; };
 		AF906445211771DF00526161 /* PlantsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF906444211771DF00526161 /* PlantsTableViewCell.swift */; };
-		AF9E0536222EC3F90075D69B /* homeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9E0535222EC3F90075D69B /* homeViewController.swift */; };
-		AF9E053B222EC9E60075D69B /* HomeDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9E053A222EC9E60075D69B /* HomeDetailViewCell.swift */; };
-		AF9E053D222EC9F80075D69B /* HomeCameraViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9E053C222EC9F80075D69B /* HomeCameraViewCell.swift */; };
 		AFB0F27C2192887900337185 /* Plantslocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB0F27B2192887900337185 /* Plantslocation.swift */; };
 		AFB0F27E2192893C00337185 /* Datatag.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB0F27D2192893C00337185 /* Datatag.swift */; };
 		AFB0F28F2192D88800337185 /* mushin.otf in Resources */ = {isa = PBXBuildFile; fileRef = AFB0F28D2192D88800337185 /* mushin.otf */; };
@@ -68,13 +64,12 @@
 		61B6DBD31CEB72B8AA570AE7 /* Pods-plants.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-plants.release.xcconfig"; path = "Target Support Files/Pods-plants/Pods-plants.release.xcconfig"; sourceTree = "<group>"; };
 		77F8F53B4022405C80231031 /* Pods-plants.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-plants.debug.xcconfig"; path = "Target Support Files/Pods-plants/Pods-plants.debug.xcconfig"; sourceTree = "<group>"; };
 		AF1DB739222E0FA40006C77F /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
-		AF1E4F9C2234EB4700266519 /* HomeShareViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeShareViewCell.swift; sourceTree = "<group>"; };
 		AF31609221226477003A3730 /* Plants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plants.swift; sourceTree = "<group>"; };
-		AF33018E2249404700FD2BAF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AF52FE562237856900A63EAB /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		AF70316A2175C13C00B0B11B /* PlantsDetailSeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsDetailSeparatorCell.swift; sourceTree = "<group>"; };
 		AF70316C2175C1BB00B0B11B /* PlantsDetailMapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsDetailMapCell.swift; sourceTree = "<group>"; };
 		AF70316E2175D52400B0B11B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		AF706D7C227218D700B3E4F9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AF90642D21176EAD00526161 /* plants.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = plants.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF90643021176EAD00526161 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF90643521176EAD00526161 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -83,9 +78,7 @@
 		AF90643C21176EAF00526161 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF906442211771C100526161 /* PlantsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsTableViewController.swift; sourceTree = "<group>"; };
 		AF906444211771DF00526161 /* PlantsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsTableViewCell.swift; sourceTree = "<group>"; };
-		AF9E0535222EC3F90075D69B /* homeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeViewController.swift; sourceTree = "<group>"; };
-		AF9E053A222EC9E60075D69B /* HomeDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewCell.swift; sourceTree = "<group>"; };
-		AF9E053C222EC9F80075D69B /* HomeCameraViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCameraViewCell.swift; sourceTree = "<group>"; };
+		AFA3DBEC227220CB0004DD9A /* plants.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = plants.entitlements; sourceTree = "<group>"; };
 		AFB0F27B2192887900337185 /* Plantslocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plantslocation.swift; sourceTree = "<group>"; };
 		AFB0F27D2192893C00337185 /* Datatag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datatag.swift; sourceTree = "<group>"; };
 		AFB0F28D2192D88800337185 /* mushin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = mushin.otf; sourceTree = "<group>"; };
@@ -163,7 +156,6 @@
 				AFCD75B721180B45002D13C1 /* PlantsDetailViewController.swift */,
 				AF70316E2175D52400B0B11B /* MapViewController.swift */,
 				AF1DB739222E0FA40006C77F /* CameraController.swift */,
-				AF9E0535222EC3F90075D69B /* homeViewController.swift */,
 				AF52FE562237856900A63EAB /* SignUpViewController.swift */,
 				AFBA1ED4223A10E30008CAA3 /* WelcomeViewController.swift */,
 				AFBA1EDE223ABBFB0008CAA3 /* LoginViewController.swift */,
@@ -191,9 +183,6 @@
 				AF70316A2175C13C00B0B11B /* PlantsDetailSeparatorCell.swift */,
 				AF70316C2175C1BB00B0B11B /* PlantsDetailMapCell.swift */,
 				AF906444211771DF00526161 /* PlantsTableViewCell.swift */,
-				AF9E053A222EC9E60075D69B /* HomeDetailViewCell.swift */,
-				AF9E053C222EC9F80075D69B /* HomeCameraViewCell.swift */,
-				AF1E4F9C2234EB4700266519 /* HomeShareViewCell.swift */,
 				AFEC26932249C0DC00FDD093 /* PostCell.swift */,
 			);
 			path = cell;
@@ -231,7 +220,8 @@
 		AF90642F21176EAD00526161 /* plants */ = {
 			isa = PBXGroup;
 			children = (
-				AF33018E2249404700FD2BAF /* GoogleService-Info.plist */,
+				AFA3DBEC227220CB0004DD9A /* plants.entitlements */,
+				AF706D7C227218D700B3E4F9 /* GoogleService-Info.plist */,
 				AFB0F28C2192D87A00337185 /* Souce3 */,
 				AFD2573621A3F7C5000E7C33 /* Source2 */,
 				AFB191502174EE0F005E81F5 /* Source */,
@@ -359,6 +349,11 @@
 				TargetAttributes = {
 					AF90642C21176EAD00526161 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -396,7 +391,7 @@
 				AFB9BD9F21762F3300A5B78F /* Rubik-Italic.ttf in Resources */,
 				AFB0F28F2192D88800337185 /* mushin.otf in Resources */,
 				AFD2573921A3F7C5000E7C33 /* setofont.ttf in Resources */,
-				AF33018F2249404800FD2BAF /* GoogleService-Info.plist in Resources */,
+				AF706D7D227218D700B3E4F9 /* GoogleService-Info.plist in Resources */,
 				AFB9BD9D21762F3300A5B78F /* Rubik-Bold.ttf in Resources */,
 				AFD2573A21A3F7C5000E7C33 /* setofont-ex.ttf in Resources */,
 				AFB9BDA321762F3300A5B78F /* Rubik-MediumItalic.ttf in Resources */,
@@ -424,6 +419,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/ImagePicker/ImagePicker.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -436,6 +432,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImagePicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -493,9 +490,7 @@
 			files = (
 				AFF6BBDF2250D58D00EC5AE8 /* PostService.swift in Sources */,
 				AF52FE572237856900A63EAB /* SignUpViewController.swift in Sources */,
-				AF9E053D222EC9F80075D69B /* HomeCameraViewCell.swift in Sources */,
 				AF70316F2175D52400B0B11B /* MapViewController.swift in Sources */,
-				AF9E053B222EC9E60075D69B /* HomeDetailViewCell.swift in Sources */,
 				AFEC26922249C09400FDD093 /* FeedTableViewController.swift in Sources */,
 				AFF35A4A225099FF000E88E9 /* UIImage+Scale.swift in Sources */,
 				AFB9BDA721762F5E00A5B78F /* Plants.xcdatamodeld in Sources */,
@@ -505,14 +500,12 @@
 				AFB0F27C2192887900337185 /* Plantslocation.swift in Sources */,
 				AFF17B0A22421D2100230AD4 /* ResetPwViewController.swift in Sources */,
 				AF31609321226477003A3730 /* Plants.swift in Sources */,
-				AF1E4F9D2234EB4700266519 /* HomeShareViewCell.swift in Sources */,
 				AFF6BBE122511D6A00EC5AE8 /* LineButton.swift in Sources */,
 				AF90643121176EAD00526161 /* AppDelegate.swift in Sources */,
 				AF906445211771DF00526161 /* PlantsTableViewCell.swift in Sources */,
 				AFCD75B821180B45002D13C1 /* PlantsDetailViewController.swift in Sources */,
 				AFBA1EDF223ABBFB0008CAA3 /* LoginViewController.swift in Sources */,
 				AF70316B2175C13C00B0B11B /* PlantsDetailSeparatorCell.swift in Sources */,
-				AF9E0536222EC3F90075D69B /* homeViewController.swift in Sources */,
 				AF70316D2175C1BB00B0B11B /* PlantsDetailMapCell.swift in Sources */,
 				AFB1914D2174E09F005E81F5 /* PlantsDetailIconTextCell.swift in Sources */,
 				AFB1914B2174DB48005E81F5 /* PlantsDetailHeaderView.swift in Sources */,
@@ -668,15 +661,16 @@
 			baseConfigurationReference = 77F8F53B4022405C80231031 /* Pods-plants.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = plants/plants.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XW9B7MQLBU;
+				DEVELOPMENT_TEAM = FJM478WRFL;
 				INFOPLIST_FILE = plants/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = viplab.NCNUplants;
+				PRODUCT_BUNDLE_IDENTIFIER = viplab.plants;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = plants/BridgeHeader.h;
 				SWIFT_VERSION = 4.0;
@@ -689,15 +683,16 @@
 			baseConfigurationReference = 61B6DBD31CEB72B8AA570AE7 /* Pods-plants.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = plants/plants.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XW9B7MQLBU;
+				DEVELOPMENT_TEAM = FJM478WRFL;
 				INFOPLIST_FILE = plants/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = viplab.NCNUplants;
+				PRODUCT_BUNDLE_IDENTIFIER = viplab.plants;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = plants/BridgeHeader.h;
 				SWIFT_VERSION = 4.0;

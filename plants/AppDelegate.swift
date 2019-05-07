@@ -11,9 +11,12 @@ import CoreData
 import Firebase
 import FBSDKCoreKit
 import GoogleSignIn
+import UserNotifications
+import FirebaseInstanceID
+import FirebaseMessaging
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
 
     var window: UIWindow?
 
@@ -22,11 +25,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Set up the style and color of the common UI elements
         //customizeUIStyle()
-        FirebaseApp.configure()
+        //FirebaseApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application,didFinishLaunchingWithOptions: launchOptions)
         
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         
+        
+        if #available(iOS 10.0, *){
+            UNUserNotificationCenter.current().delegate = self
+            let authOptions: UNAuthorizationOptions = [.alert,.badge,.sound]
+            UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: {_,_ in})
+            
+            Messaging.messaging().delegate = self
+        }
+        else{
+            let settings : UIUserNotificationSettings = UIUserNotificationSettings(types: [.alert,.badge,.sound],categories:nil)
+            application.registerUserNotificationSettings(settings)
+        }
+        application.registerForRemoteNotifications()
+        FirebaseApp.configure()
         return true
     }
     
@@ -67,6 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    
     
     // MARK: - Core Data stack
     
@@ -113,3 +131,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+
+func applicationReceivedRemoteMessage(_ remoteMessage: MessagingRemoteMessage){
+    print(remoteMessage.appData)
+}
