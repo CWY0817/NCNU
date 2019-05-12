@@ -9,18 +9,141 @@
 import UIKit
 import ImagePicker
 import Firebase
+import Photos
 
-class FeedTableViewController: UITableViewController {
+class FeedTableViewController: UITableViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     var postfeed: [Post] = []
     fileprivate var isLoadingPost = false
     
+    
+    func PhotoLibraryPermissions() -> Bool {
+        
+        let library:PHAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
+        if(library == PHAuthorizationStatus.denied || library == PHAuthorizationStatus.restricted){
+            return false
+        }else {
+            return true
+        }
+    }
+    
+    func cameraPermissions() -> Bool{
+        
+        let authStatus:AVAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+        
+        if(authStatus == AVAuthorizationStatus.denied || authStatus == AVAuthorizationStatus.restricted) {
+            return false
+        }else {
+            return true
+        }
+        
+    }
+    
+    
     @IBAction func openCamera(_ sender: Any){
         if Auth.auth().currentUser != nil{
-            let imagePickerController = ImagePickerController()
-            imagePickerController.delegate = self
-            imagePickerController.imageLimit = 1
-            present(imagePickerController, animated:true, completion: nil)
+            
+            //相片存取以及相機權限
+            let photoallow = PhotoLibraryPermissions()
+            let cameraallow = cameraPermissions()
+            
+            //選單列表
+            let optionMenu = UIAlertController(title:nil,message: "上傳圖片",preferredStyle: .actionSheet)
+            
+            //照片圖庫
+            let choosephotoHandler = { (action:UIAlertAction!) -> Void in
+                if photoallow {
+                    //判斷設置是否支持使用圖片庫
+                    if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+                        //初始化圖片控制器
+                        let imagePicker = UIImagePickerController()
+                        //設置代理
+                        imagePicker.delegate = self
+                        //指定圖片控制器類型
+                        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+                        //設置是否永允許編輯
+                        imagePicker.allowsEditing = true
+                        
+                        //彈出控制器,顯示介面
+                        self.present(imagePicker, animated:true, completion: nil)
+                    }
+                }
+                else{
+                    let alertController = UIAlertController (title: "相片存取失敗", message: "未允許存取相片", preferredStyle: .alert)
+                    let settingsAction = UIAlertAction(title: "設定", style: .default) { (_) -> Void in
+                        
+                        guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                            return
+                        }
+                        
+                        if UIApplication.shared.canOpenURL(settingsUrl) {
+                            UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                                print("Settings opened: \(success)")
+                            })
+                        }
+                    }
+                    alertController.addAction(settingsAction)
+                    let cancelAction = UIAlertAction(title: "確認", style: .default, handler: nil)
+                    alertController.addAction(cancelAction)
+                    
+                    self.present(alertController, animated: true, completion: nil)            }
+                
+            }
+            
+            
+            //相機
+            let opencameraHandler = { (action:UIAlertAction!) -> Void in
+                if cameraallow {
+                    //判斷設置是否支持使用圖片庫
+                    if UIImagePickerController.isSourceTypeAvailable(.camera){
+                        //初始化圖片控制器
+                        let imagePicker = UIImagePickerController()
+                        //設置代理
+                        imagePicker.delegate = self
+                        //指定圖片控制器類型
+                        imagePicker.sourceType = UIImagePickerController.SourceType.camera
+                        //設置是否永允許編輯
+                        imagePicker.allowsEditing = true
+                        
+                        //彈出控制器,顯示介面
+                        self.present(imagePicker, animated:true, completion: nil)
+                    }
+                }
+                else{
+                    let alertController = UIAlertController (title: "相機存取失敗", message: "未允許使用相機", preferredStyle: .alert)
+                    let settingsAction = UIAlertAction(title: "設定", style: .default) { (_) -> Void in
+                        
+                        guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                            return
+                        }
+                        
+                        if UIApplication.shared.canOpenURL(settingsUrl) {
+                            UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                                print("Settings opened: \(success)")
+                            })
+                        }
+                    }
+                    alertController.addAction(settingsAction)
+                    let cancelAction = UIAlertAction(title: "確認", style: .default, handler: nil)
+                    alertController.addAction(cancelAction)
+                    
+                    self.present(alertController, animated: true, completion: nil)            }
+                
+            }
+            
+            
+            let choosephoto = UIAlertAction(title: "相片圖庫", style: .default, handler: choosephotoHandler)
+            optionMenu.addAction(choosephoto)
+            
+            let opencamera = UIAlertAction(title: "相機", style: .default, handler: opencameraHandler)
+            optionMenu.addAction(opencamera)
+            
+            let cancelAction = UIAlertAction(title: "取消", style: .default, handler: nil)
+            optionMenu.addAction(cancelAction)
+            
+            present(optionMenu,animated: true,completion: nil)
+            
+            
         }
         else{
             let alertController = UIAlertController(title:"請先登入",message:"必須要先登入才能使用此功能",preferredStyle:UIAlertControllerStyle.alert)
@@ -42,6 +165,25 @@ class FeedTableViewController: UITableViewController {
         }
     }
     
+    
+    
+
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
+
+       if let selectedIamge = info[UIImagePickerControllerEditedImage] as? UIImage{
+            //更新圖片至雲端
+            PostService.shared.uploadImage(image:selectedIamge) {
+                self.dismiss(animated: true, completion: nil)
+                self.loadRecentPosts()
+            }
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,34 +243,7 @@ class FeedTableViewController: UITableViewController {
 
 }
 
-extension FeedTableViewController: ImagePickerDelegate {
-    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-        
-    }
-    
-    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-        
-        //取得第一張圖片
-        guard let image = images.first else {
-            dismiss(animated: true, completion: nil)
-            
-            return
-        }
-        
-        //更新圖片至雲端
-        PostService.shared.uploadImage(image:image) {
-            self.dismiss(animated: true, completion: nil)
-            self.loadRecentPosts()
-        }
-        
 
-        
-    }
-    
-    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
-}
 
 extension FeedTableViewController {
     

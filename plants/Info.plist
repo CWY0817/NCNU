@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>plants</string>
+	<string>暨大植物圖鑑</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -53,11 +53,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>for Identification system and capturing photo</string>
+	<string>APP將取用相機</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>APP將取得您現在的位置</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>for you to choose photos to upload</string>
+	<string>APP將存取相簿裡的相片</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

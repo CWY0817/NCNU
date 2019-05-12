@@ -19,10 +19,43 @@ class CameraController: UIViewController {
     
     var model = Flowers()
     
+    func cameraPermissions() -> Bool{
+        
+        let authStatus:AVAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+        
+        if(authStatus == AVAuthorizationStatus.denied || authStatus == AVAuthorizationStatus.restricted) {
+            return false
+        }else {
+            return true
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        configure()
+        let cameraallow = cameraPermissions()
+        if cameraallow {
+            configure()
+        }
+        else{
+            let alertController = UIAlertController (title: "相機存取失敗", message: "未允許使用相機", preferredStyle: .alert)
+            let settingsAction = UIAlertAction(title: "設定", style: .default) { (_) -> Void in
+                
+                guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                    return
+                }
+                
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                        print("Settings opened: \(success)")
+                    })
+                }
+            }
+            alertController.addAction(settingsAction)
+            let cancelAction = UIAlertAction(title: "確認", style: .default, handler: nil)
+            alertController.addAction(cancelAction)
+            
+            self.present(alertController, animated: true, completion: nil)            }
     }
     
     override func viewDidAppear(_ animated: Bool) {

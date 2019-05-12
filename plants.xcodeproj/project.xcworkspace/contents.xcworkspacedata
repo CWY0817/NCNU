@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:plants.xcodeproj">
+      location = "self:/Users/viplab/Desktop/NCNU/plants.xcodeproj">
    </FileRef>
 </Workspace>

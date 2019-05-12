@@ -88,6 +88,22 @@ class PostCell: UITableViewCell {
         nameLabel.text = post.user
         votecount = post.votes
         voteButton.setTitle("\(votecount)", for: .normal)
+        if Auth.auth().currentUser != nil{
+            if let currentUser = Auth.auth().currentUser{
+                if currentUser.photoURL != nil{
+                    if let data = try? Data(contentsOf:currentUser.photoURL!){
+                        avatarImageView.image = UIImage(data: data)
+                    }
+                }
+                else{
+                    avatarImageView.image = UIImage(named: "man")
+                }
+            }
+        }
+        else{
+            avatarImageView.image = UIImage(named: "man")
+        }
+        
         //voteButton.tintColor = .black
         
         //重設圖片視圖的圖片
