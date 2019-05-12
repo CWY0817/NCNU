@@ -745,31 +745,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <progressView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" id="2Mx-HB-veW">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="2"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="progressTintColor" red="0.11448422828775806" green="0.21928265609595354" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="trackTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </progressView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PostCell" id="Oio-Fi-A1n" customClass="PostCell" customModule="plants" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="470"/>
+                                <rect key="frame" x="0.0" y="30" width="375" height="470"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Oio-Fi-A1n" id="xrn-aP-aMF">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="469.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2uI-dg-h2W">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="2uI-dg-h2W" secondAttribute="height" multiplier="1:1" id="Wac-Qq-f62"/>
+                                                <constraint firstAttribute="width" secondItem="2uI-dg-h2W" secondAttribute="height" multiplier="1:1" id="pQJ-fP-IY8"/>
                                             </constraints>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="DBY-Lq-4Ii">
-                                            <rect key="frame" x="20" y="425" width="340" height="30"/>
+                                            <rect key="frame" x="5" y="380" width="365" height="30"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="aFA-AH-uRY">
-                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="305" height="30"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9K-tH-REn" userLabel="Love" customClass="LineButton" customModule="plants" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="75" id="QTk-DB-Xnd"/>
                                                                 <constraint firstAttribute="height" constant="30" id="Ulc-OM-lcm"/>
+                                                                <constraint firstAttribute="width" constant="75" id="iNh-o9-XlB"/>
                                                             </constraints>
                                                             <state key="normal" title="240" image="heart">
                                                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -796,7 +802,7 @@
                                                             </connections>
                                                         </button>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jSM-L8-qZh">
-                                                            <rect key="frame" x="105" y="0.0" width="175" height="30"/>
+                                                            <rect key="frame" x="105" y="0.0" width="200" height="30"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oPi-je-2GB">
                                                                     <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -806,9 +812,8 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YoZ-Fb-JGF">
-                                                                    <rect key="frame" x="40" y="5" width="135" height="20"/>
+                                                                    <rect key="frame" x="40" y="5" width="160" height="20"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="174" id="9mj-jJ-gc0"/>
                                                                         <constraint firstAttribute="height" constant="20" id="Pwm-95-gdn"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -820,9 +825,9 @@
                                                     </subviews>
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sc8-kd-7kx" userLabel="Download" customClass="LineButton" customModule="plants" customModuleProvider="target">
-                                                    <rect key="frame" x="310" y="0.0" width="30" height="30"/>
+                                                    <rect key="frame" x="335" y="0.0" width="30" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="EGB-mL-7CU"/>
+                                                        <constraint firstAttribute="width" constant="30" id="2hI-5L-nDt"/>
                                                         <constraint firstAttribute="height" constant="30" id="dbN-ry-bsk"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="Download"/>
@@ -832,19 +837,15 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="QM0-sr-JTR"/>
-                                            </constraints>
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="2uI-dg-h2W" secondAttribute="trailing" id="1vp-an-VVq"/>
-                                        <constraint firstItem="DBY-Lq-4Ii" firstAttribute="top" secondItem="2uI-dg-h2W" secondAttribute="bottom" constant="11" id="5ES-EJ-3Ws"/>
-                                        <constraint firstItem="2uI-dg-h2W" firstAttribute="leading" secondItem="xrn-aP-aMF" secondAttribute="leading" id="6sB-W3-1ug"/>
-                                        <constraint firstAttribute="trailing" secondItem="DBY-Lq-4Ii" secondAttribute="trailing" constant="15" id="Jen-fT-1uh"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="DBY-Lq-4Ii" secondAttribute="bottom" constant="4" id="P3J-Pe-nds"/>
-                                        <constraint firstItem="DBY-Lq-4Ii" firstAttribute="leading" secondItem="xrn-aP-aMF" secondAttribute="leading" constant="20" id="XYD-fV-9cz"/>
-                                        <constraint firstItem="2uI-dg-h2W" firstAttribute="top" secondItem="xrn-aP-aMF" secondAttribute="top" id="hQX-9q-RPj"/>
+                                        <constraint firstAttribute="trailing" secondItem="2uI-dg-h2W" secondAttribute="trailing" id="gbx-CC-gwr"/>
+                                        <constraint firstAttribute="trailing" secondItem="DBY-Lq-4Ii" secondAttribute="trailing" constant="5" id="kMd-wG-BOX"/>
+                                        <constraint firstItem="DBY-Lq-4Ii" firstAttribute="leading" secondItem="xrn-aP-aMF" secondAttribute="leading" constant="5" id="mnH-v4-met"/>
+                                        <constraint firstItem="2uI-dg-h2W" firstAttribute="leading" secondItem="xrn-aP-aMF" secondAttribute="leading" id="pST-5f-BZT"/>
+                                        <constraint firstItem="DBY-Lq-4Ii" firstAttribute="top" secondItem="2uI-dg-h2W" secondAttribute="bottom" constant="5" id="t2H-g1-wTH"/>
+                                        <constraint firstItem="2uI-dg-h2W" firstAttribute="top" secondItem="xrn-aP-aMF" secondAttribute="top" id="tQc-2x-gT5"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -863,6 +864,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="progressview" destination="2Mx-HB-veW" id="lHh-H7-qDT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10n-mW-xYO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -15,7 +15,9 @@ class FeedTableViewController: UITableViewController,UIImagePickerControllerDele
     
     var postfeed: [Post] = []
     fileprivate var isLoadingPost = false
-    
+    @IBOutlet var progressview : UIProgressView!
+    var timer: Timer?
+    var proValue: Double?
     
     func PhotoLibraryPermissions() -> Bool {
         
@@ -174,11 +176,38 @@ class FeedTableViewController: UITableViewController,UIImagePickerControllerDele
        if let selectedIamge = info[UIImagePickerControllerEditedImage] as? UIImage{
             //更新圖片至雲端
             PostService.shared.uploadImage(image:selectedIamge) {
+                //進度條
+                self.progressview.isHidden = false
+                self.progressview.setProgress(0.8, animated: true)
+                //計時器
+                self.proValue = 0;
+                self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.changeProgress), userInfo: nil, repeats: true)
+                
                 self.dismiss(animated: true, completion: nil)
+                let alertController = UIAlertController(title:"上傳成功",message:"下拉刷新頁面就可以看到囉~(*´▽`*)",preferredStyle:UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title:"OK",style:UIAlertActionStyle.default,handler:nil))
+                self.present(alertController,animated:true,completion: nil)
                 self.loadRecentPosts()
             }
         }
+        
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func changeProgress() {
+        
+        if var proValue = proValue{
+            proValue = proValue + 1.0 // 改變ProValue的值
+            if proValue > 5 {
+                // 停止使用計時器
+                print("停止使用計時器")
+                if let timer = timer{
+                    timer.invalidate()
+                }
+            } else {
+                progressview.isHidden = true
+            }
+        }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -193,7 +222,7 @@ class FeedTableViewController: UITableViewController,UIImagePickerControllerDele
         refreshControl?.backgroundColor = UIColor.white
         refreshControl?.tintColor = UIColor.black
         refreshControl?.addTarget(self, action: #selector(loadRecentPosts), for: UIControlEvents.valueChanged)
-        
+        progressview.isHidden = true
         //載入目前貼文
         loadRecentPosts()
         
