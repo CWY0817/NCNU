@@ -240,7 +240,7 @@ class FeedTableViewController: UITableViewController,UIImagePickerControllerDele
         self.tableView.insertRows(at: indexPaths, with: .fade)
         self.tableView.endUpdates()
     }
-
+    
 }
 
 
@@ -270,12 +270,14 @@ extension FeedTableViewController {
                 let indexPath = IndexPath(row: self.postfeed.count - 1, section: 0)
                 indexPaths.append(indexPath)
             }
+            //print(self.postfeed)
             self.tableView.insertRows(at: indexPaths, with: .fade)
             self.tableView.endUpdates()
             
             self.isLoadingPost = false
         }
     }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         

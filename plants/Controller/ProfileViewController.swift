@@ -128,30 +128,12 @@ class ProfileViewController: UIViewController,UIImagePickerControllerDelegate,UI
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title="個人檔案"
-        
-        if Auth.auth().currentUser != nil{
-            if let currentUser = Auth.auth().currentUser{
-                nameLabel.text = currentUser.displayName
-                if currentUser.photoURL != nil{
-                    if let data = try? Data(contentsOf:currentUser.photoURL!){
-                            profileimg.image = UIImage(data: data)
-                    }
-                }
-                else{
-                    profileimg.image = UIImage(named: "man")
-                }
-                
-                logbutton.setTitle("登出", for: .normal)
-            }
-        }
-        else{
-            nameLabel.text = "使用者"
-            logbutton.setTitle("登入", for: .normal)
-        }
+        profilesetup()
         
         // Do any additional setup after loading the view.
     }
@@ -162,5 +144,62 @@ class ProfileViewController: UIViewController,UIImagePickerControllerDelegate,UI
     }
     
 
+    func profilesetup(){
+        let POROFILE_DB_REF: DatabaseReference = Database.database().reference().child("profile")
+        
+        if Auth.auth().currentUser != nil{
+            if let currentUser = Auth.auth().currentUser {
+                nameLabel.text = currentUser.displayName
+                if let user = currentUser.displayName {
+                    let profiledef = POROFILE_DB_REF.child(user)
+                    
+                    profiledef.observeSingleEvent(of: .value, with: { (snapshot) in
+                        
+                        let value = snapshot.value as? NSDictionary
+                        let imageurl = value?["imageFileURL"] as? String ?? ""
+                        let notfirstlogin = value?["notfirstlogin"] as? Int ?? Int()
+                        
+                        if currentUser.photoURL != nil{
+                            
+                            guard let imgurl = currentUser.photoURL else {
+                                return
+                            }
+                            
+                             //更新Firebase Database的資料
+                             if notfirstlogin != 1 {
+                             ProfileService.shared.updateProfilemessage (imgref: imgurl)
+                             }
+                            
+                            if let data = try? Data(contentsOf: URL(string: imageurl)! ){
+                                self.profileimg.image = UIImage(data: data)
+                            }
+                        }
+                        else{
+                            //更新Firebase Database的資料
+                            if notfirstlogin != 1 {
+                                profiledef.updateChildValues(["username":user, "imageFileURL": "", "useremail": currentUser.email,"profilephotokey":"","notfirstlogin": 1])
+                             self.profileimg.image = UIImage(named: "man")
+                            }
+                            else {
+                                if imageurl == "" {
+                                    self.profileimg.image = UIImage(named: "man")
+                                }
+                                else {
+                                    if let data = try? Data(contentsOf: URL(string: imageurl)! ){
+                                        self.profileimg.image = UIImage(data: data)
+                                    }
+                                }
+                            }
+                        }
+                    })
+                }
+                logbutton.setTitle("登出", for: .normal)
+            }
+        }
+        else{
+            nameLabel.text = "使用者"
+            logbutton.setTitle("登入", for: .normal)
+        }
+    }
 
 }

@@ -26,6 +26,9 @@ final class ProfileService {
         
         //使用唯一個key作為圖片名稱並準備Storage參照
         let imageStorageRef = PHOTO_STORAGE_REF.child("\(profilephotoDatabaseRef.key).jpg")
+        let imageref = "\(profilephotoDatabaseRef.key).jpg"
+        
+
         
         //調整圖片大小
         let scaledImage = image.scale(newWidth: 640.0)
@@ -41,6 +44,7 @@ final class ProfileService {
         //準備上傳任務
         let uploadTask = imageStorageRef.putData(imageData, metadata:metadata)
         
+        
         //觀察上傳狀態
         uploadTask.observe(.success) { (snapshot) in
             guard let displayName = Auth.auth().currentUser?.displayName else {
@@ -52,13 +56,42 @@ final class ProfileService {
             let profileuser = displayName
             let prodef = self.POST_DB_REF.child(profileuser)
             //在資料庫中加上一個參照
+            
+            prodef.observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                let value = snapshot.value as? NSDictionary
+                let username = value?["username"] as? String ?? ""
+                let useremail = value?["useremail"] as? String ?? ""
+                let imageurl = value?["imageFileURL"] as? String ?? ""
+                let profilephotokey = value?["profilephotokey"] as? String ?? ""
+                let notfirstlogin = value?["notfirstlogin"] as? Int ?? Int()
+                
+                if profilephotokey != "" {
+                    self.PHOTO_STORAGE_REF.child(profilephotokey).delete(completion: { (error) in
+                        if let error = error{
+                            print("Failed to delete picture!")
+                        }
+                        else{
+                            print("Delete picture successfully!")
+                        }
+                    })
+                }
+                
+                let profileupdate: [String: Any] = [Profile.ProfileInfoKey.username: username,Profile.ProfileInfoKey.imageFileURL: imageurl,
+                                                    Profile.ProfileInfoKey.useremail: useremail,
+                                                    Profile.ProfileInfoKey.profilephotokey:"",
+                                                    Profile.ProfileInfoKey.notfirstlogin: notfirstlogin]
+                prodef.updateChildValues(profileupdate)
+            })
+            
             imageStorageRef.downloadURL(completion:{ (url,error) in
                 if let imageFileURL = url?.absoluteString {
                     
-                    let post: [String: Any] = [Profile.ProfileInfoKey.imageFileURL: imageFileURL,
-                                               Profile.ProfileInfoKey.useremail: useremail]
+                    let post: [String: Any] = [Profile.ProfileInfoKey.username: profileuser,
+                                               Profile.ProfileInfoKey.imageFileURL: imageFileURL,
+                                               Profile.ProfileInfoKey.useremail: useremail,Profile.ProfileInfoKey.profilephotokey: imageref,Profile.ProfileInfoKey.notfirstlogin: Int(1)]
                     
-                    prodef.setValue(post)
+                    prodef.updateChildValues(post)
                 }
             })
             completionHandler()
@@ -76,5 +109,25 @@ final class ProfileService {
         }
     }
     
+    func updateProfilemessage (imgref: URL) {
+        let imgurl = imgref
+        guard let displayName = Auth.auth().currentUser?.displayName else {
+            return
+        }
+        guard let useremail = Auth.auth().currentUser?.email else {
+            return
+        }
+        let profileuser = displayName
+        let prodef = self.POST_DB_REF.child(profileuser)
+
+        
+        //在資料庫中加上一個參照
+                
+        let profileupdate: [String: Any] = [Profile.ProfileInfoKey.username: profileuser,Profile.ProfileInfoKey.imageFileURL: imgurl.absoluteString,
+            Profile.ProfileInfoKey.useremail: useremail,
+            Profile.ProfileInfoKey.profilephotokey:"",
+            Profile.ProfileInfoKey.notfirstlogin: Int(1)]
+        prodef.updateChildValues(profileupdate)
+    }
 }
 
