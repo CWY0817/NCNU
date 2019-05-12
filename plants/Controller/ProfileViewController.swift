@@ -145,6 +145,7 @@ class ProfileViewController: UIViewController,UIImagePickerControllerDelegate,UI
     
 
     func profilesetup(){
+        
         let POROFILE_DB_REF: DatabaseReference = Database.database().reference().child("profile")
         
         if Auth.auth().currentUser != nil{
@@ -159,35 +160,54 @@ class ProfileViewController: UIViewController,UIImagePickerControllerDelegate,UI
                         let imageurl = value?["imageFileURL"] as? String ?? ""
                         let notfirstlogin = value?["notfirstlogin"] as? Int ?? Int()
                         
-                        if currentUser.photoURL != nil{
-                            
-                            guard let imgurl = currentUser.photoURL else {
-                                return
+                        
+                        
+                        if imageurl != "" {
+                            //下載大頭貼圖片
+                            if let image = CacheManager.shared.getFromCache(key: imageurl) as? UIImage {
+                                self.profileimg.image = image
                             }
-                            
-                             //更新Firebase Database的資料
-                             if notfirstlogin != 1 {
-                             ProfileService.shared.updateProfilemessage (imgref: imgurl)
-                             }
-                            
-                            if let data = try? Data(contentsOf: URL(string: imageurl)! ){
-                                self.profileimg.image = UIImage(data: data)
+                            else {
+                                if let url = URL(string: imageurl) {
+                                    let downloadTask = URLSession.shared.dataTask(with: url, completionHandler: { (data, reponse, error) in
+                                        guard let imageData = data else{
+                                            return
+                                        }
+                                        OperationQueue.main.addOperation{
+                                            guard let image = UIImage(data: imageData) else {return}
+                                            if imageurl == imageurl{
+                                                self.profileimg.image = image
+                                            }
+                                            
+                                            //加入下載圖片至快取
+                                            CacheManager.shared.cache(object: image, key: imageurl)
+                                        }
+                                    })
+                                    
+                                    downloadTask.resume()
+                                }
                             }
                         }
                         else{
-                            //更新Firebase Database的資料
-                            if notfirstlogin != 1 {
-                                profiledef.updateChildValues(["username":user, "imageFileURL": "", "useremail": currentUser.email,"profilephotokey":"","notfirstlogin": 1])
-                             self.profileimg.image = UIImage(named: "man")
-                            }
-                            else {
-                                if imageurl == "" {
-                                    self.profileimg.image = UIImage(named: "man")
+                            if currentUser.photoURL != nil{
+                                
+                                guard let imgurl = currentUser.photoURL else {
+                                    return
                                 }
-                                else {
-                                    if let data = try? Data(contentsOf: URL(string: imageurl)! ){
-                                        self.profileimg.image = UIImage(data: data)
-                                    }
+                                
+                                //更新Firebase Database的資料
+                                if notfirstlogin != 1 {
+                                    ProfileService.shared.updateProfilemessage (imgref: imgurl)
+                                        if let data = try? Data(contentsOf: currentUser.photoURL! ){
+                                            self.profileimg.image = UIImage(data: data)
+                                        }
+                                }
+                            }
+                            else{
+                                //更新Firebase Database的資料
+                                if notfirstlogin != 1 {
+                                    profiledef.updateChildValues(["username":user, "imageFileURL": "", "useremail": currentUser.email,"profilephotokey":"","notfirstlogin": 1])
+                                    self.profileimg.image = UIImage(named: "man")
                                 }
                             }
                         }
