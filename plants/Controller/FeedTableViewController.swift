@@ -181,12 +181,10 @@ class FeedTableViewController: UITableViewController,UIImagePickerControllerDele
                 self.progressview.setProgress(0.8, animated: true)
                 //計時器
                 self.proValue = 0;
-                self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.changeProgress), userInfo: nil, repeats: true)
+                self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.changeProgress), userInfo: nil, repeats: false)
                 
                 self.dismiss(animated: true, completion: nil)
-                let alertController = UIAlertController(title:"上傳成功",message:"下拉刷新頁面就可以看到囉~(*´▽`*)",preferredStyle:UIAlertControllerStyle.alert)
-                alertController.addAction(UIAlertAction(title:"OK",style:UIAlertActionStyle.default,handler:nil))
-                self.present(alertController,animated:true,completion: nil)
+                
                 self.loadRecentPosts()
             }
         }
@@ -205,9 +203,17 @@ class FeedTableViewController: UITableViewController,UIImagePickerControllerDele
                     timer.invalidate()
                 }
             } else {
+                let alertController = UIAlertController(title:"上傳成功",message:"下拉刷新頁面就可以看到囉~(*´▽`*)",preferredStyle:UIAlertControllerStyle.alert)
+                //顯示提示框
+                self.present(alertController, animated: true, completion: nil)
+                //0.5秒後自動消失
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                    self.presentedViewController?.dismiss(animated: false, completion: nil)
+                }
                 progressview.isHidden = true
             }
         }
+        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

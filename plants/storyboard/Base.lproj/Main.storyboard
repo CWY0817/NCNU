@@ -948,7 +948,7 @@
             </objects>
             <point key="canvasLocation" x="6084.057971014493" y="2754.6195652173915"/>
         </scene>
-        <!--Camera Controller-->
+        <!--植物辨識-->
         <scene sceneID="xoS-Rw-aku">
             <objects>
                 <viewController id="bSY-gh-YhI" customClass="CameraController" customModule="plants" customModuleProvider="target" sceneMemberID="viewController">
@@ -975,7 +975,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Du9-ub-mZq"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="search" id="fdT-4V-UPD"/>
+                    <tabBarItem key="tabBarItem" title="植物辨識" image="searchmark" id="fdT-4V-UPD"/>
                     <connections>
                         <outlet property="descriptionLabel" destination="RbK-ii-FH5" id="wnh-Cx-iFP"/>
                     </connections>
@@ -984,11 +984,11 @@
             </objects>
             <point key="canvasLocation" x="5546" y="-1469"/>
         </scene>
-        <!--Photo-->
+        <!--照片分享-->
         <scene sceneID="8OK-jk-eRV">
             <objects>
                 <navigationController storyboardIdentifier="MainView" automaticallyAdjustsScrollViewInsets="NO" id="loY-0O-SVH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Photo" image="Camera-1" selectedImage="Camera-1" id="vTB-aA-eUH"/>
+                    <tabBarItem key="tabBarItem" title="照片分享" image="Camera-1" selectedImage="Camera-1" id="vTB-aA-eUH"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9t5-XB-T8h">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1057,11 +1057,11 @@
             </objects>
             <point key="canvasLocation" x="1113" y="704"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--植物圖鑑-->
         <scene sceneID="gxu-Aj-qtv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IOL-Ey-mti" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="Wfb-gg-ehF"/>
+                    <tabBarItem key="tabBarItem" title="植物圖鑑" image="bookmark" id="Wfb-gg-ehF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1fA-SG-iSv">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1097,11 +1097,11 @@
             </objects>
             <point key="canvasLocation" x="1218.840579710145" y="1844.8369565217392"/>
         </scene>
-        <!--Profile-->
+        <!--個人檔案-->
         <scene sceneID="dpi-GQ-uUm">
             <objects>
                 <navigationController storyboardIdentifier="ProfileNav" automaticallyAdjustsScrollViewInsets="NO" id="WWs-WP-q9c" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="head" selectedImage="head" id="On7-c0-wfS"/>
+                    <tabBarItem key="tabBarItem" title="個人檔案" image="head" selectedImage="head" id="On7-c0-wfS"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5aU-y7-M4c">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1121,6 +1121,7 @@
         <image name="199547" width="960" height="1706"/>
         <image name="Camera-1" width="25" height="25"/>
         <image name="Download" width="23" height="23"/>
+        <image name="bookmark" width="24" height="16"/>
         <image name="head" width="25" height="24"/>
         <image name="heart" width="22" height="18"/>
         <image name="heart-tick" width="22" height="21"/>
@@ -1128,6 +1129,7 @@
         <image name="iconfinder_facebook_313103" width="128" height="128"/>
         <image name="iconfinder_google_294675" width="128" height="128"/>
         <image name="man" width="128" height="128"/>
+        <image name="searchmark" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="YOY-5C-FT1"/>
