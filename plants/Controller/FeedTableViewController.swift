@@ -63,7 +63,7 @@ class FeedTableViewController: UITableViewController,UIImagePickerControllerDele
                         //設置代理
                         imagePicker.delegate = self
                         //指定圖片控制器類型
-                        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+                        imagePicker.sourceType = .photoLibrary
                         //設置是否永允許編輯
                         imagePicker.allowsEditing = true
                         
@@ -104,7 +104,7 @@ class FeedTableViewController: UITableViewController,UIImagePickerControllerDele
                         //設置代理
                         imagePicker.delegate = self
                         //指定圖片控制器類型
-                        imagePicker.sourceType = UIImagePickerController.SourceType.camera
+                        imagePicker.sourceType = .camera
                         //設置是否永允許編輯
                         imagePicker.allowsEditing = true
                         
