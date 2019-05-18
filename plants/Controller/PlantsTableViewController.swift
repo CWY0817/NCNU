@@ -285,7 +285,7 @@ class PlantsTableViewController: UITableViewController,UISearchResultsUpdating {
     
     
     
-    /* //MARK: - 向左滑動
+     //MARK: - 向左滑動
      override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?{
      
      //刪除
@@ -344,6 +344,6 @@ class PlantsTableViewController: UITableViewController,UISearchResultsUpdating {
      
      return Swipe
      
-     }*/
+     }
 }
 

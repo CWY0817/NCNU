@@ -741,7 +741,7 @@
         <scene sceneID="al4-Ar-c1A">
             <objects>
                 <viewController id="FWi-4k-PCM" customClass="FeedTableViewController" customModule="plants" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="470" sectionHeaderHeight="28" sectionFooterHeight="28" id="Nwp-qX-a1V">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="520" sectionHeaderHeight="28" sectionFooterHeight="28" id="Nwp-qX-a1V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -753,20 +753,32 @@
                         </progressView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PostCell" id="Oio-Fi-A1n" customClass="PostCell" customModule="plants" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="30" width="375" height="470"/>
+                                <rect key="frame" x="0.0" y="30" width="375" height="520"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Oio-Fi-A1n" id="xrn-aP-aMF">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="469.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="519.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUV-UU-HT2">
+                                            <rect key="frame" x="340" y="5" width="25" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="BvS-GB-CFp"/>
+                                                <constraint firstAttribute="width" constant="25" id="huM-oS-huV"/>
+                                            </constraints>
+                                            <color key="tintColor" red="0.68773794420000001" green="0.68773794420000001" blue="0.68773794420000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <state key="normal" title="Button" image="more"/>
+                                            <connections>
+                                                <action selector="morebutton:" destination="Oio-Fi-A1n" eventType="touchUpInside" id="1FN-kq-I1b"/>
+                                            </connections>
+                                        </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2uI-dg-h2W">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                                            <rect key="frame" x="0.0" y="38" width="375" height="375"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="2uI-dg-h2W" secondAttribute="height" multiplier="1:1" id="pQJ-fP-IY8"/>
                                             </constraints>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="DBY-Lq-4Ii">
-                                            <rect key="frame" x="5" y="380" width="365" height="30"/>
+                                            <rect key="frame" x="5" y="423" width="365" height="30"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="aFA-AH-uRY">
                                                     <rect key="frame" x="0.0" y="0.0" width="305" height="30"/>
@@ -840,12 +852,14 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="2uI-dg-h2W" secondAttribute="trailing" id="gbx-CC-gwr"/>
+                                        <constraint firstAttribute="trailing" secondItem="dUV-UU-HT2" secondAttribute="trailing" constant="10" id="5r7-NU-si8"/>
+                                        <constraint firstItem="DBY-Lq-4Ii" firstAttribute="top" secondItem="2uI-dg-h2W" secondAttribute="bottom" constant="10" id="6EZ-MQ-efj"/>
+                                        <constraint firstItem="dUV-UU-HT2" firstAttribute="top" secondItem="xrn-aP-aMF" secondAttribute="top" constant="5" id="BUl-Uh-ojF"/>
+                                        <constraint firstAttribute="trailing" secondItem="2uI-dg-h2W" secondAttribute="trailing" id="es9-2B-2w7"/>
                                         <constraint firstAttribute="trailing" secondItem="DBY-Lq-4Ii" secondAttribute="trailing" constant="5" id="kMd-wG-BOX"/>
                                         <constraint firstItem="DBY-Lq-4Ii" firstAttribute="leading" secondItem="xrn-aP-aMF" secondAttribute="leading" constant="5" id="mnH-v4-met"/>
-                                        <constraint firstItem="2uI-dg-h2W" firstAttribute="leading" secondItem="xrn-aP-aMF" secondAttribute="leading" id="pST-5f-BZT"/>
-                                        <constraint firstItem="DBY-Lq-4Ii" firstAttribute="top" secondItem="2uI-dg-h2W" secondAttribute="bottom" constant="5" id="t2H-g1-wTH"/>
-                                        <constraint firstItem="2uI-dg-h2W" firstAttribute="top" secondItem="xrn-aP-aMF" secondAttribute="top" id="tQc-2x-gT5"/>
+                                        <constraint firstItem="2uI-dg-h2W" firstAttribute="leading" secondItem="xrn-aP-aMF" secondAttribute="leading" id="nk7-uK-al2"/>
+                                        <constraint firstItem="2uI-dg-h2W" firstAttribute="top" secondItem="dUV-UU-HT2" secondAttribute="bottom" constant="8" id="oiz-JF-MZ8"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -1129,6 +1143,7 @@
         <image name="iconfinder_facebook_313103" width="128" height="128"/>
         <image name="iconfinder_google_294675" width="128" height="128"/>
         <image name="man" width="128" height="128"/>
+        <image name="more" width="128" height="128"/>
         <image name="searchmark" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>

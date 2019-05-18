@@ -18,6 +18,7 @@ class FeedTableViewController: UITableViewController,UIImagePickerControllerDele
     @IBOutlet var progressview : UIProgressView!
     var timer: Timer?
     var proValue: Double?
+    var messages: Post?
     
     func PhotoLibraryPermissions() -> Bool {
         
@@ -129,7 +130,9 @@ class FeedTableViewController: UITableViewController,UIImagePickerControllerDele
                     let cancelAction = UIAlertAction(title: "確認", style: .default, handler: nil)
                     alertController.addAction(cancelAction)
                     
-                    self.present(alertController, animated: true, completion: nil)            }
+                    self.present(alertController, animated: true, completion: nil)
+                    
+                }
                 
             }
             
@@ -219,6 +222,26 @@ class FeedTableViewController: UITableViewController,UIImagePickerControllerDele
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+
+   /* var shareimg : String?
+    @IBAction func sharebutton(_ sender: Any){
+        //分享
+        var share : UIImage?
+        if let data = try? Data(contentsOf: URL(string: shareimg!)! ){
+            share = UIImage(data: data)
+        }
+        let sharetext = "你看這植物的照片很美麗喔～(*´∀`)~♥"
+            
+        let activityController : UIActivityViewController
+        if let shareimage = share {
+            activityController = UIActivityViewController(activityItems: [shareimage,sharetext], applicationActivities: nil)
+        }
+        else{
+            activityController = UIActivityViewController(activityItems: [sharetext], applicationActivities: nil)
+        }
+        self.present(activityController,animated: true,completion: nil)
+    }*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -313,12 +336,16 @@ extension FeedTableViewController {
         }
     }
     
+    /*override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }*/
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
         let currentPost = postfeed[indexPath.row]
         cell.configure(post: currentPost)
+        //cell.sharephoto(post: currentPost)
         
         return cell
     }

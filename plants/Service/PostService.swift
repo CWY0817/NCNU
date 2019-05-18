@@ -55,7 +55,8 @@ final class PostService {
                     let post: [String: Any] = [Post.PostInfoKey.imageFileURL: imageFileURL,
                                                Post.PostInfoKey.votes : Int(0),
                                                Post.PostInfoKey.user: displayName,
-                                               Post.PostInfoKey.timestamp: timestamp]
+                                               Post.PostInfoKey.timestamp: timestamp,
+                                               Post.PostInfoKey.report : Int(0)]
                     
                     postDatabaseRef.setValue(post)
                 }

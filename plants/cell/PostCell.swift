@@ -7,15 +7,26 @@
 //
 
 import UIKit
+import MessageUI
 import Firebase
 
-class PostCell: UITableViewCell {
+class PostCell: UITableViewCell{
+    
+    
+
+    
     
     @IBOutlet var nameLabel: UILabel!
     
     @IBOutlet var voteButton: LineButton! {
         didSet {
             voteButton.tintColor = .red
+        }
+    }
+    
+    @IBOutlet var sharebtn : UIButton!{
+        didSet{
+            sharebtn.tintColor = .gray
         }
     }
     
@@ -34,6 +45,8 @@ class PostCell: UITableViewCell {
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
     }
     
+
+    
     private var currentPost: Post?
     var postdetail : Post?
     override func awakeFromNib() {
@@ -46,6 +59,87 @@ class PostCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    
+    var reportnum = 0
+    @IBAction func morebutton(_ sender: Any){
+        
+         let optionMenu = UIAlertController(title: nil,message: nil,preferredStyle: .actionSheet)
+        
+         //檢舉
+         let reportHandler = { (action:UIAlertAction!) -> Void in
+            if let user = self.postdetail?.postId {
+                
+                let alertController = UIAlertController (title: "檢舉", message: "你確定要檢舉這則Po文嗎？", preferredStyle: .alert)
+                let settingsAction = UIAlertAction(title: "確定", style: .default) { (_) -> Void in
+                    
+                    //取得Firebase Database的Reference
+                    let postsRef = Database.database().reference().child("posts")
+                    let postRef = postsRef.child(user)
+                    
+                    //更新Firebase Database的資料
+                    if let postdetail = self.postdetail{
+                        //self.reportnum = postdetail.report
+                        postRef.updateChildValues(["imageFileURL": postdetail.imageFileURL,"timestamp": postdetail.timestamp,"user": postdetail.user,"votes":postdetail.votes,"report": self.reportnum + 1
+                            
+                            ])
+                        self.reportnum = self.reportnum + 1
+                    }
+                    
+                    let alertControllers = UIAlertController(title: "檢舉成功",
+                                                            message: "我們會盡快處理這則貼文", preferredStyle: .alert)
+                    //顯示提示框
+                    self.window?.rootViewController?.present(alertControllers, animated: true, completion: nil)
+                    //0.5秒後自動消失
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                         self.window?.rootViewController?.presentedViewController?.dismiss(animated: false, completion: nil)
+                    }
+                }
+                alertController.addAction(settingsAction)
+                let cancelAction = UIAlertAction(title: "取消", style: .default, handler: nil)
+                alertController.addAction(cancelAction)
+                
+                self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+                
+         
+                
+            }
+        }
+
+        
+        //分享
+        let shareHandler = {(action:UIAlertAction!) -> Void in
+            var share : UIImage?
+            if let postdetail = self.postdetail{
+                if let data = try? Data(contentsOf: URL(string: (postdetail.imageFileURL))! ){
+                    share = UIImage(data: data)
+                }
+                let sharetext = "你看這植物的照片很美麗喔～(*´∀`)~♥"
+                
+                let activityController : UIActivityViewController
+                if let shareimage = share {
+                    activityController = UIActivityViewController(activityItems: [shareimage,sharetext], applicationActivities: nil)
+                }
+                else{
+                    activityController = UIActivityViewController(activityItems: [sharetext], applicationActivities: nil)
+                }
+                self.window?.rootViewController?.present(activityController, animated: true, completion: nil)
+            }
+            
+        }
+        
+        let shareAction = UIAlertAction(title: "分享", style: .default, handler: shareHandler)
+        optionMenu.addAction(shareAction)
+        
+         let report = UIAlertAction(title: "檢舉", style: .destructive, handler: reportHandler)
+         optionMenu.addAction(report)
+        
+        let cancelAction = UIAlertAction(title: "取消", style: .default, handler: nil)
+        optionMenu.addAction(cancelAction)
+        
+        self.window?.rootViewController?.present(optionMenu, animated: true, completion: nil)
+    }
+
 
     
     //按讚
@@ -74,6 +168,13 @@ class PostCell: UITableViewCell {
     }
     
     
+    /*func sendMail(){
+        let mailcontroller = MFMailComposeViewController()
+        mailcontroller.setSubject("暨大植物圖鑑")
+        mailcontroller.setToRecipients(["ncnuplants@gmail.com"])
+        self.window?.rootViewController?.present(mailcontroller, animated: true, completion: nil)
+    }*/
+    
     
     func configure(post: Post) {
         
@@ -87,6 +188,7 @@ class PostCell: UITableViewCell {
         //設定姓名與按讚數
         nameLabel.text = post.user
         votecount = post.votes
+        reportnum = post.report
         voteButton.setTitle("\(votecount)", for: .normal)
         if Auth.auth().currentUser != nil{
             if let currentUser = Auth.auth().currentUser{
@@ -134,4 +236,14 @@ class PostCell: UITableViewCell {
             }
         }
     }
+    
+    /*func sharephoto(post: Post){
+        let shareimgurl = post.imageFileURL
+        
+    }*/
+    
+    
+    
+    
+
 }
