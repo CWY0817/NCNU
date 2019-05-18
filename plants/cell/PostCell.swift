@@ -168,12 +168,12 @@ class PostCell: UITableViewCell{
     }
     
     
-    /*func sendMail(){
+    func sendMail(){
         let mailcontroller = MFMailComposeViewController()
         mailcontroller.setSubject("暨大植物圖鑑")
         mailcontroller.setToRecipients(["ncnuplants@gmail.com"])
         self.window?.rootViewController?.present(mailcontroller, animated: true, completion: nil)
-    }*/
+    }
     
     
     func configure(post: Post) {
@@ -189,6 +189,11 @@ class PostCell: UITableViewCell{
         nameLabel.text = post.user
         votecount = post.votes
         reportnum = post.report
+        if reportnum > 20 {
+            if MFMailComposeViewController.canSendMail(){
+                sendMail()
+            }
+        }
         voteButton.setTitle("\(votecount)", for: .normal)
         if Auth.auth().currentUser != nil{
             if let currentUser = Auth.auth().currentUser{
