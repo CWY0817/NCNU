@@ -13,6 +13,9 @@
         <array key="mushin.otf">
             <string>Mushin</string>
         </array>
+        <array key="setofont.ttf">
+            <string>SetoFont</string>
+        </array>
     </customFonts>
     <scenes>
         <!--暨大植物圖鑑-->
@@ -131,7 +134,7 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WcE-Uf-1Y3" userLabel="NAME">
-                                            <rect key="frame" x="14" y="276" width="70" height="54"/>
+                                            <rect key="frame" x="14" y="276" width="100" height="54"/>
                                             <fontDescription key="fontDescription" name="Mushin" family="Mushin" pointSize="35"/>
                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -455,20 +458,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back3" translatesAutoresizingMaskIntoConstraints="NO" id="Udc-JM-7Fd">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暨大植物圖鑑" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obF-f8-eHM">
+                                <rect key="frame" x="67.5" y="123" width="240" height="40"/>
+                                <fontDescription key="fontDescription" name="SetoFont" family="SetoFont" pointSize="40"/>
+                                <color key="textColor" red="0.57874745130000005" green="0.32151988149999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0M-Y2-dBz">
+                                <rect key="frame" x="166.5" y="497.5" width="42" height="40.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="F0M-Y2-dBz" secondAttribute="height" multiplier="31:30" id="r3N-kY-psG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SetoFont" family="SetoFont" pointSize="21"/>
+                                <state key="normal" title="建立">
+                                    <color key="titleColor" red="0.57874745130000005" green="0.32151988149999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="registerAccountWithSender:" destination="NMW-k7-QQO" eventType="touchUpInside" id="ht9-AW-fEf"/>
+                                </connections>
+                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="VBD-Hy-tTA">
-                                <rect key="frame" x="103" y="168" width="169" height="238"/>
+                                <rect key="frame" x="98.5" y="214" width="178" height="250.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名字" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acX-Ch-4aT">
-                                        <rect key="frame" x="0.0" y="0.0" width="35" height="21"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="42" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="acX-Ch-4aT" secondAttribute="height" multiplier="5:3" id="oHo-9J-jwN"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="SetoFont" family="SetoFont" pointSize="21"/>
+                                        <color key="textColor" red="0.57874745130000005" green="0.32151988149999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FJm-3d-W2m">
-                                        <rect key="frame" x="0.0" y="38" width="168" height="30"/>
+                                        <rect key="frame" x="0.0" y="42" width="168" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="FJm-3d-W2m" secondAttribute="height" multiplier="28:5" id="zeD-8Z-Onc"/>
                                         </constraints>
@@ -482,16 +508,16 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="信箱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2d5-gp-78x">
-                                        <rect key="frame" x="0.0" y="85" width="35" height="21"/>
+                                        <rect key="frame" x="0.0" y="89" width="42" height="25.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="2d5-gp-78x" secondAttribute="height" multiplier="5:3" id="yhV-LL-ERc"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="SetoFont" family="SetoFont" pointSize="21"/>
+                                        <color key="textColor" red="0.57874745130000005" green="0.32151988149999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KD1-oH-tg9">
-                                        <rect key="frame" x="0.0" y="123" width="168" height="30"/>
+                                        <rect key="frame" x="0.0" y="131.5" width="168" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="KD1-oH-tg9" secondAttribute="height" multiplier="28:5" id="kLk-3D-LWW"/>
                                         </constraints>
@@ -500,16 +526,16 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密碼" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bO-wF-kHV">
-                                        <rect key="frame" x="0.0" y="170" width="35" height="21"/>
+                                        <rect key="frame" x="0.0" y="178.5" width="42" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="3bO-wF-kHV" secondAttribute="height" multiplier="5:3" id="6y9-fi-wGL"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="SetoFont" family="SetoFont" pointSize="21"/>
+                                        <color key="textColor" red="0.57874745130000005" green="0.32151988149999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p0P-mO-gZM">
-                                        <rect key="frame" x="0.0" y="208" width="168" height="30"/>
+                                        <rect key="frame" x="0.0" y="220.5" width="168" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="p0P-mO-gZM" secondAttribute="height" multiplier="28:5" id="Jb8-AM-mHR"/>
                                         </constraints>
@@ -522,22 +548,18 @@
                                     <constraint firstAttribute="width" secondItem="VBD-Hy-tTA" secondAttribute="height" multiplier="56:79" id="JjP-3T-ycx"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0M-Y2-dBz">
-                                <rect key="frame" x="172" y="434.5" width="31" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="F0M-Y2-dBz" secondAttribute="height" multiplier="31:30" id="r3N-kY-psG"/>
-                                </constraints>
-                                <state key="normal" title="建立"/>
-                                <connections>
-                                    <action selector="registerAccountWithSender:" destination="NMW-k7-QQO" eventType="touchUpInside" id="ht9-AW-fEf"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.82061630487442017" green="0.95332044363021851" blue="0.87307471036911011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Udc-JM-7Fd" firstAttribute="leading" secondItem="RXn-Fq-hT7" secondAttribute="leading" id="D4P-Rl-Xc8"/>
+                            <constraint firstItem="obF-f8-eHM" firstAttribute="top" secondItem="RXn-Fq-hT7" secondAttribute="top" constant="59" id="EgP-4F-m0L"/>
                             <constraint firstItem="VBD-Hy-tTA" firstAttribute="centerX" secondItem="joq-ee-DL6" secondAttribute="centerX" id="NdH-T3-xrL"/>
-                            <constraint firstItem="F0M-Y2-dBz" firstAttribute="top" secondItem="VBD-Hy-tTA" secondAttribute="bottom" constant="28.670000000000002" id="ap6-Fh-7wT"/>
-                            <constraint firstItem="VBD-Hy-tTA" firstAttribute="top" secondItem="RXn-Fq-hT7" secondAttribute="top" constant="104" id="edd-68-tC1"/>
+                            <constraint firstItem="VBD-Hy-tTA" firstAttribute="top" secondItem="obF-f8-eHM" secondAttribute="bottom" constant="51" id="UVx-Uo-FtO"/>
+                            <constraint firstItem="Udc-JM-7Fd" firstAttribute="bottom" secondItem="RXn-Fq-hT7" secondAttribute="bottom" id="qJs-Zm-1T1"/>
+                            <constraint firstItem="obF-f8-eHM" firstAttribute="centerX" secondItem="joq-ee-DL6" secondAttribute="centerX" id="uVu-J6-nOs"/>
+                            <constraint firstItem="Udc-JM-7Fd" firstAttribute="top" secondItem="RXn-Fq-hT7" secondAttribute="top" id="xW7-y8-ZbM"/>
+                            <constraint firstItem="F0M-Y2-dBz" firstAttribute="top" secondItem="VBD-Hy-tTA" secondAttribute="bottom" constant="33" id="xiN-CA-PKV"/>
+                            <constraint firstItem="Udc-JM-7Fd" firstAttribute="trailing" secondItem="RXn-Fq-hT7" secondAttribute="trailing" id="yrQ-UH-akY"/>
                             <constraint firstItem="F0M-Y2-dBz" firstAttribute="centerX" secondItem="joq-ee-DL6" secondAttribute="centerX" id="zed-dw-gK9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RXn-Fq-hT7"/>
@@ -562,7 +584,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nEb-x2-0BY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6856.521739130435" y="1411.9565217391305"/>
+            <point key="canvasLocation" x="6855.1999999999998" y="1411.8440779610196"/>
         </scene>
         <!--登入-->
         <scene sceneID="wS3-Ev-kiL">
@@ -572,38 +594,81 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back3" translatesAutoresizingMaskIntoConstraints="NO" id="cT0-3j-0zy">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9Ig-5I-cpB">
+                                <rect key="frame" x="145.5" y="446" width="84" height="92"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3SG-iM-gI9">
+                                        <rect key="frame" x="19.5" y="0.0" width="45" height="43.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="3SG-iM-gI9" secondAttribute="height" multiplier="31:30" id="wN0-Tp-KzP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SetoFont" family="SetoFont" pointSize="22"/>
+                                        <state key="normal" title="登入">
+                                            <color key="titleColor" red="0.57874745130000005" green="0.32151988149999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="loginWithSender:" destination="uDl-0N-pPg" eventType="touchUpInside" id="4R4-5t-FNY"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4sY-Th-ORW">
+                                        <rect key="frame" x="0.0" y="51.5" width="84" height="40.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="4sY-Th-ORW" secondAttribute="height" multiplier="31:15" id="HUM-rW-3pD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SetoFont" family="SetoFont" pointSize="21"/>
+                                        <state key="normal" title="忘記密碼">
+                                            <color key="titleColor" red="0.57874745130000005" green="0.32151988149999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="E5O-QQ-wEO" kind="show" id="dWH-c3-meO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="9Ig-5I-cpB" secondAttribute="height" multiplier="31:34" id="wF7-bE-dC8"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暨大植物圖鑑" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRx-kn-FAj">
+                                <rect key="frame" x="67.5" y="123" width="240" height="40"/>
+                                <fontDescription key="fontDescription" name="SetoFont" family="SetoFont" pointSize="40"/>
+                                <color key="textColor" red="0.57874745130000005" green="0.32151988149999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="1mA-CD-IlH">
-                                <rect key="frame" x="115" y="172" width="145" height="156"/>
+                                <rect key="frame" x="110" y="216" width="155" height="167"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="帳號" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JMb-rm-wTL">
-                                        <rect key="frame" x="0.0" y="0.0" width="35" height="21"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="44" height="26.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="JMb-rm-wTL" secondAttribute="height" multiplier="5:3" id="OAd-99-sTG"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="SetoFont" family="SetoFont" pointSize="22"/>
+                                        <color key="textColor" red="0.57874745130000005" green="0.32151988149999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Vw-yL-9DX">
-                                        <rect key="frame" x="0.0" y="39" width="144" height="30"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="144" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="2Vw-yL-9DX" secondAttribute="height" multiplier="24:5" id="Ugr-At-DfJ"/>
                                         </constraints>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.57874745130000005" green="0.32151988149999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密碼" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQq-xx-76e">
-                                        <rect key="frame" x="0.0" y="87" width="35" height="21"/>
+                                        <rect key="frame" x="0.0" y="92.5" width="44" height="26.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="mQq-xx-76e" secondAttribute="height" multiplier="5:3" id="Huj-ZN-NVE"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="SetoFont" family="SetoFont" pointSize="22"/>
+                                        <color key="textColor" red="0.57874745130000005" green="0.32151988149999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C3A-iw-Z71">
-                                        <rect key="frame" x="0.0" y="126" width="144" height="30"/>
+                                        <rect key="frame" x="0.0" y="137" width="144" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="C3A-iw-Z71" secondAttribute="height" multiplier="24:5" id="Xkf-7b-gbW"/>
                                         </constraints>
@@ -616,41 +681,19 @@
                                     <constraint firstAttribute="width" secondItem="1mA-CD-IlH" secondAttribute="height" multiplier="144:155" id="bQK-ky-1LQ"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9Ig-5I-cpB">
-                                <rect key="frame" x="156.5" y="365.5" width="62" height="68"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3SG-iM-gI9">
-                                        <rect key="frame" x="15.5" y="0.0" width="31" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="3SG-iM-gI9" secondAttribute="height" multiplier="31:30" id="wN0-Tp-KzP"/>
-                                        </constraints>
-                                        <state key="normal" title="登入"/>
-                                        <connections>
-                                            <action selector="loginWithSender:" destination="uDl-0N-pPg" eventType="touchUpInside" id="4R4-5t-FNY"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4sY-Th-ORW">
-                                        <rect key="frame" x="0.0" y="38" width="62" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="4sY-Th-ORW" secondAttribute="height" multiplier="31:15" id="HUM-rW-3pD"/>
-                                        </constraints>
-                                        <state key="normal" title="忘記密碼"/>
-                                        <connections>
-                                            <segue destination="E5O-QQ-wEO" kind="show" id="dWH-c3-meO"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="9Ig-5I-cpB" secondAttribute="height" multiplier="31:34" id="wF7-bE-dC8"/>
-                                </constraints>
-                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.82061630487442017" green="0.95332044363021851" blue="0.87307471036911011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="9Ig-5I-cpB" firstAttribute="top" secondItem="1mA-CD-IlH" secondAttribute="bottom" constant="37.329999999999998" id="0BC-f7-hx8"/>
+                            <constraint firstItem="9Ig-5I-cpB" firstAttribute="top" secondItem="1mA-CD-IlH" secondAttribute="bottom" constant="63" id="87P-vS-KYk"/>
+                            <constraint firstItem="cT0-3j-0zy" firstAttribute="top" secondItem="86H-Pl-kwm" secondAttribute="top" id="B1U-Wk-fRB"/>
+                            <constraint firstItem="cT0-3j-0zy" firstAttribute="bottom" secondItem="86H-Pl-kwm" secondAttribute="bottom" id="Das-qG-Y6e"/>
+                            <constraint firstItem="cT0-3j-0zy" firstAttribute="leading" secondItem="86H-Pl-kwm" secondAttribute="leading" id="Jpi-tk-tQ7"/>
+                            <constraint firstItem="1mA-CD-IlH" firstAttribute="top" secondItem="oRx-kn-FAj" secondAttribute="bottom" constant="53" id="UAx-N8-CJI"/>
+                            <constraint firstItem="oRx-kn-FAj" firstAttribute="top" secondItem="86H-Pl-kwm" secondAttribute="top" constant="59" id="eGx-oA-q4I"/>
+                            <constraint firstItem="oRx-kn-FAj" firstAttribute="centerX" secondItem="Wcg-3h-k5u" secondAttribute="centerX" id="gQA-vF-5f8"/>
                             <constraint firstItem="9Ig-5I-cpB" firstAttribute="centerX" secondItem="Wcg-3h-k5u" secondAttribute="centerX" id="hHq-pH-SoI"/>
-                            <constraint firstItem="1mA-CD-IlH" firstAttribute="top" secondItem="86H-Pl-kwm" secondAttribute="top" constant="108" id="qlo-Qf-7ag"/>
                             <constraint firstItem="1mA-CD-IlH" firstAttribute="centerX" secondItem="Wcg-3h-k5u" secondAttribute="centerX" id="scx-03-LZ6"/>
+                            <constraint firstItem="cT0-3j-0zy" firstAttribute="trailing" secondItem="86H-Pl-kwm" secondAttribute="trailing" id="v5G-Vx-nq4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="86H-Pl-kwm"/>
                     </view>
@@ -673,7 +716,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BNk-0i-UZS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6084.057971014493" y="677.44565217391312"/>
+            <point key="canvasLocation" x="6084" y="676.91154422788611"/>
         </scene>
         <!--Reset Pw View Controller-->
         <scene sceneID="1Vv-z0-1zi">
@@ -683,20 +726,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back3" translatesAutoresizingMaskIntoConstraints="NO" id="Lm6-Aj-OrX">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7mu-CV-esE">
-                                <rect key="frame" x="76.5" y="261" width="222" height="59"/>
+                                <rect key="frame" x="68.5" y="305" width="238" height="63"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="信箱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lb5-uZ-hSF">
-                                        <rect key="frame" x="0.0" y="0.0" width="35" height="21"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="42" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Lb5-uZ-hSF" secondAttribute="height" multiplier="5:3" id="fRf-AZ-zMp"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="SetoFont" family="SetoFont" pointSize="21"/>
+                                        <color key="textColor" red="0.57874745130000005" green="0.32151988149999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gvl-fw-2Mp">
-                                        <rect key="frame" x="0.0" y="29" width="218" height="30"/>
+                                        <rect key="frame" x="0.0" y="33" width="218" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Gvl-fw-2Mp" secondAttribute="height" multiplier="109:15" id="VRf-NG-RgG"/>
                                         </constraints>
@@ -710,19 +757,34 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJz-bt-HGh">
-                                <rect key="frame" x="156.5" y="350.5" width="62" height="30"/>
+                                <rect key="frame" x="145.5" y="398.5" width="84" height="40.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="VJz-bt-HGh" secondAttribute="height" multiplier="31:15" id="BQX-uz-Tqo"/>
                                 </constraints>
-                                <state key="normal" title="重設密碼"/>
+                                <fontDescription key="fontDescription" name="SetoFont" family="SetoFont" pointSize="21"/>
+                                <state key="normal" title="重設密碼">
+                                    <color key="titleColor" red="0.57874745130000005" green="0.32151988149999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="resetPasswdWithSender:" destination="E5O-QQ-wEO" eventType="touchUpInside" id="8jr-9F-B4h"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暨大植物圖鑑" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuc-5O-eqN">
+                                <rect key="frame" x="67.5" y="172" width="240" height="40"/>
+                                <fontDescription key="fontDescription" name="SetoFont" family="SetoFont" pointSize="40"/>
+                                <color key="textColor" red="0.57874745130000005" green="0.32151988149999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.82061630487442017" green="0.95332044363021851" blue="0.87307471036911011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Lm6-Aj-OrX" firstAttribute="leading" secondItem="3Sn-CW-4RE" secondAttribute="leading" id="1Vy-XO-fjx"/>
+                            <constraint firstItem="vuc-5O-eqN" firstAttribute="centerX" secondItem="7mu-vY-lBs" secondAttribute="centerX" id="8rp-od-FE7"/>
+                            <constraint firstItem="Lm6-Aj-OrX" firstAttribute="bottom" secondItem="3Sn-CW-4RE" secondAttribute="bottom" id="DyI-ZV-eLc"/>
+                            <constraint firstItem="vuc-5O-eqN" firstAttribute="top" secondItem="3Sn-CW-4RE" secondAttribute="top" constant="108" id="FPA-kp-jPB"/>
                             <constraint firstItem="7mu-CV-esE" firstAttribute="centerX" secondItem="7mu-vY-lBs" secondAttribute="centerX" id="OBr-r1-chO"/>
+                            <constraint firstItem="Lm6-Aj-OrX" firstAttribute="top" secondItem="3Sn-CW-4RE" secondAttribute="top" id="PGI-DN-RLK"/>
+                            <constraint firstItem="Lm6-Aj-OrX" firstAttribute="trailing" secondItem="3Sn-CW-4RE" secondAttribute="trailing" id="RrF-RD-mIK"/>
                             <constraint firstItem="VJz-bt-HGh" firstAttribute="centerX" secondItem="7mu-vY-lBs" secondAttribute="centerX" id="Sus-4S-Fdh"/>
                             <constraint firstItem="VJz-bt-HGh" firstAttribute="top" secondItem="7mu-CV-esE" secondAttribute="bottom" constant="30.329999999999998" id="fBf-bY-bXn"/>
                             <constraint firstItem="7mu-CV-esE" firstAttribute="top" secondItem="3Sn-CW-4RE" secondAttribute="top" constant="241" id="wgj-tJ-74D"/>
@@ -735,7 +797,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oW7-uB-VVL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6721.739130434783" y="677.44565217391312"/>
+            <point key="canvasLocation" x="6720.8000000000002" y="676.91154422788611"/>
         </scene>
         <!--照片分享區-->
         <scene sceneID="al4-Ar-c1A">
@@ -1135,6 +1197,7 @@
         <image name="199547" width="960" height="1706"/>
         <image name="Camera-1" width="25" height="25"/>
         <image name="Download" width="23" height="23"/>
+        <image name="back3" width="885" height="1300"/>
         <image name="bookmark" width="24" height="16"/>
         <image name="head" width="25" height="24"/>
         <image name="heart" width="22" height="18"/>
@@ -1147,6 +1210,6 @@
         <image name="searchmark" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YOY-5C-FT1"/>
+        <segue reference="hhm-La-7xe"/>
     </inferredMetricsTieBreakers>
 </document>

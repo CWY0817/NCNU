@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		28BA695A858FF2E608E82553 /* Pods_plants.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23A19B8336E021BCBBCC8704 /* Pods_plants.framework */; };
 		AF1DB73A222E0FA40006C77F /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1DB739222E0FA40006C77F /* CameraController.swift */; };
-		AF2D89452283057700727E40 /* Flowers.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = AF2D89442283057700727E40 /* Flowers.mlmodel */; };
 		AF31609321226477003A3730 /* Plants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF31609221226477003A3730 /* Plants.swift */; };
 		AF52FE572237856900A63EAB /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF52FE562237856900A63EAB /* SignUpViewController.swift */; };
 		AF70316B2175C13C00B0B11B /* PlantsDetailSeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF70316A2175C13C00B0B11B /* PlantsDetailSeparatorCell.swift */; };
@@ -21,6 +20,7 @@
 		AF90643B21176EAF00526161 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF90643921176EAF00526161 /* LaunchScreen.storyboard */; };
 		AF906443211771C100526161 /* PlantsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF906442211771C100526161 /* PlantsTableViewController.swift */; };
 		AF906445211771DF00526161 /* PlantsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF906444211771DF00526161 /* PlantsTableViewCell.swift */; };
+		AF9B7869229128A3003EEED6 /* Flowers.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = AF9B7868229128A2003EEED6 /* Flowers.mlmodel */; };
 		AF9DA84D2282AAE7005AEDB7 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DA84C2282AAE6005AEDB7 /* ProfileService.swift */; };
 		AF9DA84F2282AB66005AEDB7 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DA84E2282AB66005AEDB7 /* Post.swift */; };
 		AF9DA8512282ABB7005AEDB7 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DA8502282ABB7005AEDB7 /* Profile.swift */; };
@@ -66,7 +66,6 @@
 		61B6DBD31CEB72B8AA570AE7 /* Pods-plants.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-plants.release.xcconfig"; path = "Target Support Files/Pods-plants/Pods-plants.release.xcconfig"; sourceTree = "<group>"; };
 		77F8F53B4022405C80231031 /* Pods-plants.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-plants.debug.xcconfig"; path = "Target Support Files/Pods-plants/Pods-plants.debug.xcconfig"; sourceTree = "<group>"; };
 		AF1DB739222E0FA40006C77F /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
-		AF2D89442283057700727E40 /* Flowers.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Flowers.mlmodel; sourceTree = "<group>"; };
 		AF31609221226477003A3730 /* Plants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plants.swift; sourceTree = "<group>"; };
 		AF52FE562237856900A63EAB /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		AF70316A2175C13C00B0B11B /* PlantsDetailSeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsDetailSeparatorCell.swift; sourceTree = "<group>"; };
@@ -80,6 +79,7 @@
 		AF90643C21176EAF00526161 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF906442211771C100526161 /* PlantsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsTableViewController.swift; sourceTree = "<group>"; };
 		AF906444211771DF00526161 /* PlantsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsTableViewCell.swift; sourceTree = "<group>"; };
+		AF9B7868229128A2003EEED6 /* Flowers.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Flowers.mlmodel; sourceTree = "<group>"; };
 		AF9DA84C2282AAE6005AEDB7 /* ProfileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		AF9DA84E2282AB66005AEDB7 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		AF9DA8502282ABB7005AEDB7 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
@@ -147,7 +147,7 @@
 		AF1DB736222E0F410006C77F /* MLmodel */ = {
 			isa = PBXGroup;
 			children = (
-				AF2D89442283057700727E40 /* Flowers.mlmodel */,
+				AF9B7868229128A2003EEED6 /* Flowers.mlmodel */,
 			);
 			name = MLmodel;
 			path = "New Group";
@@ -417,7 +417,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-plants/Pods-plants-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-plants/Pods-plants-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
@@ -444,7 +444,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-plants/Pods-plants-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-plants/Pods-plants-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		38047ADC9FE9AEA433588A7C /* [CP] Check Pods Manifest.lock */ = {
@@ -473,7 +473,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-plants/Pods-plants-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-plants/Pods-plants-resources.sh",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -484,7 +484,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-plants/Pods-plants-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-plants/Pods-plants-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -503,7 +503,6 @@
 				AFBA1ED5223A10E30008CAA3 /* WelcomeViewController.swift in Sources */,
 				AFEC26942249C0DC00FDD093 /* PostCell.swift in Sources */,
 				AFB0F27C2192887900337185 /* Plantslocation.swift in Sources */,
-				AF2D89452283057700727E40 /* Flowers.mlmodel in Sources */,
 				AF9DA8512282ABB7005AEDB7 /* Profile.swift in Sources */,
 				AFF17B0A22421D2100230AD4 /* ResetPwViewController.swift in Sources */,
 				AF31609321226477003A3730 /* Plants.swift in Sources */,
@@ -513,6 +512,7 @@
 				AFCD75B821180B45002D13C1 /* PlantsDetailViewController.swift in Sources */,
 				AFBA1EDF223ABBFB0008CAA3 /* LoginViewController.swift in Sources */,
 				AF70316B2175C13C00B0B11B /* PlantsDetailSeparatorCell.swift in Sources */,
+				AF9B7869229128A3003EEED6 /* Flowers.mlmodel in Sources */,
 				AF70316D2175C1BB00B0B11B /* PlantsDetailMapCell.swift in Sources */,
 				AFB1914D2174E09F005E81F5 /* PlantsDetailIconTextCell.swift in Sources */,
 				AF9DA84F2282AB66005AEDB7 /* Post.swift in Sources */,
